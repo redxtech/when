@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'TT Norms';
+  /*noinspection CssUnknownTarget*/
+  src: url('/fonts/TTNorms-Italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  /*noinspection CssUnknownTarget*/
+  src: url('/fonts/TTNorms-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  /*noinspection CssUnknownTarget*/
+  src: url('/fonts/TTNorms-BlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  /*noinspection CssUnknownTarget*/
+  src: url('/fonts/TTNorms-BoldItalic.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  /*noinspection CssUnknownTarget*/
+  src: url('/fonts/TTNorms-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  /*noinspection CssUnknownTarget*/
+  src: url('/fonts/TTNorms-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  /*noinspection CssUnknownTarget*/
+  src: url('/fonts/TTNorms-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
