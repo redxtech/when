@@ -24,11 +24,6 @@
       @apply my-12;
     }
 
-    /* Large (lg) */
-    @media (min-width: 1024px) {
-      @apply my-18;
-    }
-
     h1 {
       @apply font-bold text-gray-900 text-2xl leading-7;
 

@@ -1,8 +1,8 @@
 <template>
-  <main v-if="main" :id="id" class="section">
+  <main v-if="main" :id="id" class="section" :class="{ top }">
     <slot />
   </main>
-  <section v-else :id="id" class="section">
+  <section v-else :id="id" class="section" :class="{ top }">
     <slot />
   </section>
 </template>
@@ -16,6 +16,11 @@
         required: true
       },
       main: {
+        type: Boolean,
+        required: false,
+        default: false
+      },
+      top: {
         type: Boolean,
         required: false,
         default: false
@@ -33,9 +38,8 @@
       @apply my-12;
     }
 
-    /* Large (lg) */
-    @media (min-width: 1024px) {
-      @apply my-18;
+    &.top {
+      margin-top: 0;
     }
   }
 </style>
