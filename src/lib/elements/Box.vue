@@ -19,10 +19,10 @@
 
 <style scoped>
   .box {
-    @apply rounded shadow overflow-hidden transition duration-150 ease-in-out;
+    @apply rounded shadow-md overflow-hidden transition duration-150 ease-in-out;
 
     &:hover {
-      @apply shadow-lg;
+      @apply shadow-xl;
     }
   }
 </style>
