@@ -7,14 +7,20 @@
       :countdown="show.countdown"
       :poster="show.poster"
     />
+    <message
+      title="sign in for your own list."
+      message="click to login."
+      href="https://trakt.tv"
+    ></message>
   </div>
 </template>
 <script>
+  import Message from '../elements/message.vue'
   import Show from '../elements/show.vue'
 
   export default {
     name: 'Shows',
-    components: { Show },
+    components: { Message, Show },
     data() {
       return {
         shows: [
