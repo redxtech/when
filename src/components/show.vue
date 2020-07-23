@@ -7,7 +7,7 @@
     </div>
     <div class="content">
       <element-title size="2xl">{{ title }}</element-title>
-      <span class="prose prose-lg">{{ countdown }}</span>
+      <span class="countdown">{{ countdown }}</span>
     </div>
   </box>
 </template>
@@ -39,10 +39,10 @@
 
 <style scoped>
   .show {
-    @apply flex flex-row flex-no-wrap items-center content-center justify-between cursor-pointer;
+    @apply flex flex-row flex-no-wrap items-center content-center justify-start cursor-pointer;
 
     .poster {
-      @apply w-24;
+      @apply w-20 flex-none;
 
       img {
         @apply object-cover rounded;
@@ -50,7 +50,11 @@
     }
 
     .content {
-      @apply w-full h-full ml-8 align-baseline;
+      @apply h-full ml-4 flex-1 flex flex-col items-start justify-between;
+
+      .countdown {
+        @apply text-lg;
+      }
     }
   }
 </style>
