@@ -29,7 +29,7 @@
 
   export default {
     name: 'Foot',
-    components: { FooterIcon, Container },
+    components: { Container, FooterIcon },
     data() {
       return {
         contacts: [
