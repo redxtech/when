@@ -1,0 +1,10 @@
+/* purgecss start ignore */
+/*noinspection CssInvalidAtRule*/
+@tailwind base;
+
+/*noinspection CssInvalidAtRule*/
+@tailwind components;
+/* purgecss end ignore */
+
+/*noinspection CssInvalidAtRule*/
+@tailwind utilities;
