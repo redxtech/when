@@ -16,6 +16,12 @@ module.exports = {
         primary: '#004250',
         secondary: '#3094B4'
       },
+      boxShadow: {
+        box:
+          '0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12)',
+        hover:
+          '0 20px 25px -5px rgba(0, 0, 0, .1), 0 3px 5px -1px rgba(0, 0, 0, .2), 0 5px 8px 0 rgba(0, 0, 0, .14), 0 1px 14px 0 rgba(0, 0, 0, .12)'
+      },
       container: {
         center: true
       },
