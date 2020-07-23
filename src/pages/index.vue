@@ -6,7 +6,7 @@
 
 <script>
   import Sec from '../lib/layout/Sec.vue'
-  import Shows from '../components/shows.vue'
+  import Shows from '../components/sections/Shows.vue'
 
   export default {
     name: 'Home',

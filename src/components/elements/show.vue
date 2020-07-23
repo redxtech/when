@@ -3,7 +3,7 @@
     <div class="poster">
       <!--suppress HtmlUnknownTarget -->
       <img v-if="poster" :src="poster" :alt="title" />
-      <img v-else src="../assets/img/trakt-icon-red.svg" alt="trakt icon" />
+      <img v-else src="../../assets/img/trakt-icon-red.svg" alt="trakt icon" />
     </div>
     <div class="content">
       <element-title size="2xl">{{ title }}</element-title>
@@ -13,8 +13,8 @@
 </template>
 
 <script>
-  import Box from '../lib/elements/Box.vue'
-  import ElementTitle from '../lib/titles/ElementTitle.vue'
+  import Box from '../../lib/elements/Box.vue'
+  import ElementTitle from '../../lib/titles/ElementTitle.vue'
 
   export default {
     name: 'Show',

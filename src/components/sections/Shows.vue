@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-  import Show from './show.vue'
+  import Show from '../elements/show.vue'
 
   export default {
     name: 'Shows',

@@ -20,8 +20,8 @@
 </template>
 
 <script>
-  import Container from '../lib/layout/Container.vue'
-  import FooterIcon from './elements/footer-icon.vue'
+  import Container from '../../lib/layout/Container.vue'
+  import FooterIcon from '../elements/footer-icon.vue'
 
   // TODO: create new shadow class to make shadow go upwards?
 

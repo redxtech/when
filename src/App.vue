@@ -8,8 +8,8 @@
 
 <script>
   import Container from './lib/layout/Container.vue'
-  import Foot from './components/Foot.vue'
-  import PageHeader from './components/PageHeader.vue'
+  import Foot from './components/sections/Foot.vue'
+  import PageHeader from './components/sections/PageHeader.vue'
 
   export default {
     name: 'App',

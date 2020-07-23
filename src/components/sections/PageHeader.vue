@@ -5,8 +5,8 @@
 </template>
 
 <script>
-  import Container from '../lib/layout/Container.vue'
-  import PageTitle from '../lib/titles/PageTitle.vue'
+  import Container from '../../lib/layout/Container.vue'
+  import PageTitle from '../../lib/titles/PageTitle.vue'
 
   export default {
     name: 'PageHeader',
