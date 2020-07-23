@@ -1,5 +1,5 @@
 <template>
-  <h3 class="text-gray-900 leading-5 sm:leading-7" :class="fontStyle">
+  <h3 class="element-title" :class="fontStyle">
     <slot />
   </h3>
 </template>
@@ -48,3 +48,14 @@
     }
   }
 </script>
+
+<style scoped>
+  .element-title {
+    @apply text-gray-900 leading-5;
+
+    /* Small (sm) */
+    @media (min-width: 640px) {
+      @apply leading-7;
+    }
+  }
+</style>

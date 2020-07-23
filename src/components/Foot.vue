@@ -1,7 +1,7 @@
 <template>
-  <footer class="bg-white">
+  <footer class="footer">
     <container>
-      <div class="mt-8 flex justify-center">
+      <div class="icons">
         <footer-icon
           v-for="contact in contacts"
           :key="contact.name"
@@ -12,10 +12,8 @@
           :viewbox="contact.viewbox"
         />
       </div>
-      <div class="my-8">
-        <p class="text-center text-base leading-6 text-gray-400">
-          &copy; {{ year }} Gabe Dunn Dev.
-        </p>
+      <div class="copy-text">
+        <p>&copy; {{ year }} Gabe Dunn Dev.</p>
       </div>
     </container>
   </footer>
@@ -72,3 +70,21 @@
     }
   }
 </script>
+
+<style scoped>
+  .footer {
+    @apply bg-white;
+  }
+
+  .icons {
+    @apply mt-8 flex justify-center;
+  }
+
+  .copy-text {
+    @apply my-8;
+
+    p {
+      @apply text-center text-base leading-6 text-gray-400;
+    }
+  }
+</style>

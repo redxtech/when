@@ -1,11 +1,6 @@
 <template>
-  <span class="inline-flex rounded-md shadow-sm">
-    <button
-      type="button"
-      class="inline-flex items-center border font-medium focus:outline-none transition ease-in-out duration-150"
-      :class="style"
-      @click="$emit('click')"
-    >
+  <span class="button">
+    <button type="button" :class="style" @click="$emit('click')">
       <span v-if="$slots.leading" class="button-leading-icon">
         <slot name="leading" />
       </span>
@@ -181,7 +176,19 @@
   }
 </script>
 
-<style>
+<style scoped>
+  .button {
+    @apply inline-flex rounded-md shadow-sm;
+
+    button {
+      @apply inline-flex items-center border font-medium transition ease-in-out duration-150;
+
+      &:focus {
+        @apply outline-none;
+      }
+    }
+  }
+
   .button-leading-icon svg,
   .button-tailing-icon svg {
     @apply h-5 w-5;

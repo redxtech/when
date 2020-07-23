@@ -1,6 +1,6 @@
 <template>
   <page-header />
-  <container class="flex-1">
+  <container grow>
     <router-view />
   </container>
   <foot />

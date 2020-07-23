@@ -1,7 +1,5 @@
 <template>
-  <h2
-    class="font-bold text-gray-900 text-lg sm:text-xl leading-7 sm:leading-9 sm:truncate"
-  >
+  <h2 class="section-title">
     <slot />
   </h2>
 </template>
@@ -14,3 +12,14 @@
     name: 'SectionTitle'
   }
 </script>
+
+<style scoped>
+  .section-title {
+    @apply font-bold text-gray-900 text-lg leading-7;
+
+    /* Small (sm) */
+    @media (min-width: 640px) {
+      @apply text-xl leading-9 truncate;
+    }
+  }
+</style>

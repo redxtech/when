@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="rounded shadow hover:shadow-lg overflow-hidden transition duration-150 ease-in-out"
-    :class="{ 'p-4': !noPadding }"
-  >
+  <div class="box" :class="{ 'p-4': !noPadding }">
     <slot />
   </div>
 </template>
@@ -19,3 +16,13 @@
     }
   }
 </script>
+
+<style scoped>
+  .box {
+    @apply rounded shadow overflow-hidden transition duration-150 ease-in-out;
+
+    &:hover {
+      @apply shadow-lg;
+    }
+  }
+</style>

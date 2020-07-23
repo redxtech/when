@@ -1,13 +1,9 @@
 <template>
-  <article class="mx-auto">
-    <div
-      class="rounded overflow-hidden transition duration-150 ease-in-out"
-      :class="style"
-    >
+  <article class="card">
+    <div :class="style">
       <a v-if="image && href" :href="href" target="_blank">
         <!--suppress HtmlUnknownTarget -->
         <img
-          class="w-full"
           :class="{ 'cursor-pointer': imageCursorPointer }"
           :src="image"
           :alt="alt"
@@ -17,7 +13,6 @@
       <!--suppress HtmlUnknownTarget -->
       <img
         v-else-if="image"
-        class="w-full"
         :class="{ 'cursor-pointer': imageCursorPointer }"
         :src="image"
         :alt="alt"
@@ -31,7 +26,7 @@
         }"
       >
         <slot name="title" />
-        <div class="mt-1 prose">
+        <div class="content">
           <slot />
         </div>
       </div>
@@ -113,3 +108,21 @@
     }
   }
 </script>
+
+<style scoped>
+  .card {
+    @apply mx-auto;
+
+    & > div {
+      @apply rounded overflow-hidden transition duration-150 ease-in-out;
+
+      img {
+        @apply w-full;
+      }
+
+      .content {
+        @apply mt-1 prose;
+      }
+    }
+  }
+</style>

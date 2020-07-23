@@ -1,11 +1,34 @@
 <template>
-  <div class="container max-w-screen-xl px-4 sm:px-6 lg:px-8">
+  <div class="container" :class="{ 'flex-1': grow }">
     <slot />
   </div>
 </template>
 
 <script>
   export default {
-    name: 'Container'
+    name: 'Container',
+    props: {
+      grow: {
+        type: Boolean,
+        required: false,
+        default: false
+      }
+    }
   }
 </script>
+
+<style scoped>
+  .container {
+    @apply max-w-screen-xl px-4;
+
+    /* Small (sm) */
+    @media (min-width: 640px) {
+      @apply px-6;
+    }
+
+    /* Large (lg) */
+    @media (min-width: 1024px) {
+      @apply px-8;
+    }
+  }
+</style>

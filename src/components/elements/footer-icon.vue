@@ -1,11 +1,7 @@
 <template>
-  <a
-    :href="href"
-    :target="targetNotBlank ? '' : '_blank'"
-    class="mx-3 text-gray-400 hover:text-gray-500"
-  >
+  <a :href="href" :target="targetNotBlank ? '' : '_blank'" class="icon">
     <span class="sr-only" v-text="name" />
-    <svg class="h-6 w-6" fill="currentColor" :viewBox="viewbox">
+    <svg fill="currentColor" :viewBox="viewbox">
       <path fill="currentColor" :d="path" />
     </svg>
   </a>
@@ -39,3 +35,17 @@
     }
   }
 </script>
+
+<style scoped>
+  .icon {
+    @apply mx-3 text-gray-400;
+
+    &:hover {
+      @apply text-gray-500;
+    }
+
+    svg {
+      @apply h-6 w-6;
+    }
+  }
+</style>
