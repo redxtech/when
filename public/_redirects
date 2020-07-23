@@ -1,0 +1,4 @@
+http://when-next.gabedunn.dev/* https://when-next.gabedunn.dev/:splat 301!
+
+# History mode for SPA
+/* / 200
