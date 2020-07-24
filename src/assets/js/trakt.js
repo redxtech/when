@@ -110,7 +110,7 @@ export default class TraktAPI {
   }
 
   getOAuthURL(origin) {
-    return `https://api.trakt.tv/oauth/authorize?response_type=code&client_id=${this.api_key}&redirect_uri=${origin}`
+    return `https://trakt.tv/oauth/authorize?response_type=code&client_id=${this.api_key}&redirect_uri=${origin}`
   }
 
   async getOAuthToken(code) {
