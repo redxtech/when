@@ -15,16 +15,20 @@ const headers = {
 }
 
 export const exchange = async code => {
-  return post(
-    'token',
-    {
-      code,
-      redirect_uri: process.env.VITE_ORIGIN,
-      grant_type: 'authorization_code',
-      ...body
-    },
-    headers
-  )
+  try {
+    return post(
+      'token',
+      {
+        code,
+        redirect_uri: process.env.VITE_ORIGIN,
+        grant_type: 'authorization_code',
+        ...body
+      },
+      headers
+    )
+  } catch (err) {
+    return {}
+  }
 }
 
 export const revoke = async token => {
@@ -41,7 +45,7 @@ export const revoke = async token => {
 export const response = {
   statusCode: 200,
   headers: {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': process.env.VITE_ORIGIN,
     'Access-Control-Allow-Headers': 'Content-Type'
   }
 }
