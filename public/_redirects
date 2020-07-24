@@ -1,4 +1,12 @@
-http://when-next.gabedunn.dev/* https://when-next.gabedunn.dev/:splat 301!
+# force https
+http://when.gabedunn.dev/* https://when.gabedunn.dev/:splat 301!
+http://when-next.netlify.app/* https://when-next.netlify.app/:splat 301!
+
+# redirect subdomain to main domain
+#https://when-next.netlify.app/* https://when.gabedunn.dev/:splat 301!
+
+# functions proxy
+/functions/* /.netlify/functions/:splat 200
 
 # History mode for SPA
 /* / 200

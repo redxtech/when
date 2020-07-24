@@ -35,7 +35,7 @@
     "vite": "^1.0.0-rc.1"
   },
   "lint-staged": {
-    "*.{js,vue}": "yarn lint"
+    "src/*.{js,vue}": "yarn lint"
   },
   "husky": {
     "hooks": {
