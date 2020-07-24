@@ -25,8 +25,10 @@ export default new Vuex.Store({
     invalidateRefresh: state => (state.refresh = undefined)
   },
   actions: {
-    setToken: (ctx, token) => ctx.commit('setToken', token),
-    setRefresh: (ctx, refresh) => ctx.commit('setRefresh', refresh),
+    setToken: (ctx, { token, refresh }) => {
+      ctx.commit('setToken', token)
+      ctx.commit('setRefresh', refresh)
+    },
     invalidateToken: ctx => {
       ctx.commit('invalidateToken')
       ctx.commit('invalidateRefresh')
