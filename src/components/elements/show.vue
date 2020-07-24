@@ -2,11 +2,11 @@
   <box class="show">
     <div class="poster">
       <!--suppress HtmlUnknownTarget -->
-      <img v-if="poster" :src="poster" :alt="title" />
+      <img v-if="poster" :src="poster" :alt="slug" />
       <img v-else src="../../assets/img/trakt-icon-red.svg" alt="trakt icon" />
     </div>
     <div class="details">
-      <element-title size="2xl">{{ title }}</element-title>
+      <element-title size="2xl">{{ slug }}</element-title>
       <span class="countdown">{{ countdown }}</span>
     </div>
   </box>
@@ -20,18 +20,16 @@
     name: 'Show',
     components: { ElementTitle, Box },
     props: {
-      title: {
+      slug: {
         type: String,
         required: true
-      },
-      poster: {
-        type: String,
-        required: false,
-        default: ''
-      },
-      countdown: {
-        type: String,
-        required: true
+      }
+    },
+    data() {
+      return {
+        poster:
+          'https://fanart.tv/fanart/tv/289590/tvposter/mr-robot-56d567a4a9e94.jpg',
+        countdown: '13d 20h 14m 48s'
       }
     }
   }
