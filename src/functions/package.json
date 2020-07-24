@@ -1,0 +1,7 @@
+{
+  "name": "when-functions",
+  "version": "0.0.0",
+  "dependencies": {
+    "bent": "^7.3.7"
+  }
+}
