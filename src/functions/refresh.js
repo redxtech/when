@@ -1,20 +1,21 @@
-import { revoke, response } from './utils/auth.js'
+import { refresh, response } from './utils/auth.js'
 
 exports.handler = async event => {
   if (event.httpMethod === 'OPTIONS') {
     return response
   }
 
-  const { token } = JSON.parse(event.body)
+  const { refresh_token } = JSON.parse(event.body)
 
   try {
-    await revoke(token)
+    const auth = await refresh(refresh_token)
 
     return {
       ...response,
       body: JSON.stringify(
         {
-          status: 'success'
+          status: 'success',
+          auth
         },
         null,
         2
@@ -22,7 +23,7 @@ exports.handler = async event => {
     }
   } catch (err) {
     return {
-      statusCode: 400,
+      statusCode: 401,
       headers: response.headers,
       body: JSON.stringify(
         {

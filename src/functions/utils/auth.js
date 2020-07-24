@@ -27,7 +27,32 @@ export const exchange = async code => {
       headers
     )
   } catch (err) {
-    return {}
+    return {
+      access_token: undefined,
+      refresh_token: undefined,
+      expires_in: undefined
+    }
+  }
+}
+
+export const refresh = async refresh_token => {
+  try {
+    return post(
+      'token',
+      {
+        refresh_token,
+        redirect_uri: process.env.VITE_ORIGIN,
+        grant_type: 'refresh_token',
+        ...body
+      },
+      headers
+    )
+  } catch (err) {
+    return {
+      access_token: undefined,
+      refresh_token: undefined,
+      expires_in: undefined
+    }
   }
 }
 
