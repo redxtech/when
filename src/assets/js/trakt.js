@@ -38,9 +38,7 @@ export default class TraktAPI {
         status
       )(`${path}${extended ? '?extended=full' : ''}`)
     } catch (err) {
-      const message = `GET request to ${path} failed (token=${!!token}).`
-      console.error(message)
-      throw new Error(message)
+      throw new Error(`GET request to ${path} failed (token=${!!token}).`)
     }
   }
 
@@ -53,9 +51,7 @@ export default class TraktAPI {
         status
       )(path, body, this.createHeaders(token))
     } catch (err) {
-      const message = `POST request to ${path} failed.`
-      console.error(message)
-      throw new Error(message)
+      throw new Error(`POST request to ${path} failed.`)
     }
   }
 
@@ -136,16 +132,10 @@ export default class TraktAPI {
 
   async checkOAuthToken(token) {
     try {
-      const res = await this.get({
-        path: '/users/me',
-        token: token + '3',
-        status: [200, 401]
-      })
-      return !!res
+      await this.get({ path: '/users/me', token })
+      return true
     } catch (e) {
-      return new Promise((resolve, reject) => {
-        reject(e)
-      })
+      return false
     }
   }
 
