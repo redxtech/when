@@ -7,7 +7,13 @@
     </div>
     <div class="details">
       <element-title size="2xl">{{ title }}</element-title>
-      <span class="countdown">{{ countdown }}</span>
+      <span class="countdown">
+        <countdown v-if="airing" :airing="airing" />
+        <template v-else-if="status === 'returning series'">
+          next episode to be announced.
+        </template>
+        <template v-else>{{ status }}.</template>
+      </span>
     </div>
   </box>
 </template>
@@ -15,10 +21,11 @@
 <script>
   import Box from '../../lib/elements/Box.vue'
   import ElementTitle from '../../lib/titles/ElementTitle.vue'
+  import Countdown from './countdown.vue'
 
   export default {
     name: 'Show',
-    components: { ElementTitle, Box },
+    components: { Countdown, ElementTitle, Box },
     props: {
       slug: {
         type: String,
@@ -29,6 +36,7 @@
       return {
         title: 'loading...',
         poster: undefined,
+        status: undefined,
         episodeTitle: 'tba',
         airing: undefined,
         season: undefined,
@@ -39,13 +47,15 @@
     async mounted() {
       const {
         title,
+        status,
         ids: { tmdb }
-      } = await this.trakt.getShow(this.slug)
+      } = await this.trakt.getShow(this.slug, true)
       const poster = await this.tmdb.getPosterPath(tmdb)
 
       // assign the show information to the state
       this.title = title
       this.poster = poster
+      this.status = status
 
       // attempt to get the next episode
       const {

@@ -58,8 +58,8 @@ export default class TraktAPI {
     )(path, body)
   }
 
-  getShow(id) {
-    return this.get({ path: `/shows/${id}` })
+  getShow(id, extended = false) {
+    return this.get({ path: `/shows/${id}`, extended })
   }
 
   async getNextEpisode(id) {
