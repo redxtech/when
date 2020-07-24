@@ -2,11 +2,11 @@
   <box class="show">
     <div class="poster">
       <!--suppress HtmlUnknownTarget -->
-      <img v-if="poster" :src="poster" :alt="slug" />
+      <img v-if="poster" :src="poster" :alt="title" />
       <img v-else src="../../assets/img/trakt-icon-red.svg" alt="trakt icon" />
     </div>
     <div class="details">
-      <element-title size="2xl">{{ slug }}</element-title>
+      <element-title size="2xl">{{ title }}</element-title>
       <span class="countdown">{{ countdown }}</span>
     </div>
   </box>
@@ -27,10 +27,19 @@
     },
     data() {
       return {
-        poster:
-          'https://fanart.tv/fanart/tv/289590/tvposter/mr-robot-56d567a4a9e94.jpg',
+        title: 'loading...',
+        poster: undefined,
         countdown: '13d 20h 14m 48s'
       }
+    },
+    async mounted() {
+      const show = await this.trakt.getShow(this.slug)
+      console.log(show)
+
+      const { title } = show
+
+      // assign the show information to the state
+      this.title = title
     }
   }
 </script>
