@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import router from './router.js'
+import router from './assets/js/router.js'
 import './assets/css/tailwind.css'
 import './assets/css/tt-norms.css'
 
