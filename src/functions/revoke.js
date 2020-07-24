@@ -8,14 +8,13 @@ exports.handler = async event => {
   const { token } = JSON.parse(event.body)
 
   try {
-    const revoked = await revoke(token)
+    await revoke(token)
 
     return {
       ...response,
       body: JSON.stringify(
         {
-          status: 'success',
-          revoked
+          status: 'success'
         },
         null,
         2
