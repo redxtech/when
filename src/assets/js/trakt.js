@@ -6,11 +6,11 @@ export default class TraktAPI {
   origin
   server
 
-  constructor(api_key) {
+  constructor(api_key, origin, server = origin) {
     // initialize the instance with the api key
     this.api_key = api_key
-    this.origin = import.meta.env.VITE_ORIGIN
-    this.server = import.meta.env.VITE_SERVER
+    this.origin = origin
+    this.server = server
   }
 
   createHeaders(token = false) {
