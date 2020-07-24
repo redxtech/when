@@ -1,5 +1,7 @@
 import bent from 'bent'
 
+// TODO: wrap most functions with error handlers
+
 export default class TraktAPI {
   // private fields
   api_key
@@ -29,30 +31,22 @@ export default class TraktAPI {
   }
 
   get({ path, extended = false, token = false, status = 200 }) {
-    try {
-      return bent(
-        'https://api.trakt.tv',
-        'GET',
-        'json',
-        this.createHeaders(token),
-        status
-      )(`${path}${extended ? '?extended=full' : ''}`)
-    } catch (err) {
-      throw new Error(`GET request to ${path} failed (token=${!!token}).`)
-    }
+    return bent(
+      'https://api.trakt.tv',
+      'GET',
+      'json',
+      this.createHeaders(token),
+      status
+    )(`${path}${extended ? '?extended=full' : ''}`)
   }
 
   post({ path, token, body, status = 200 }) {
-    try {
-      return bent(
-        `https://api.trakt.tv`,
-        'POST',
-        'json',
-        status
-      )(path, body, this.createHeaders(token))
-    } catch (err) {
-      throw new Error(`POST request to ${path} failed.`)
-    }
+    return bent(
+      `https://api.trakt.tv`,
+      'POST',
+      'json',
+      status
+    )(path, body, this.createHeaders(token))
   }
 
   postServer(path, body) {
@@ -68,8 +62,20 @@ export default class TraktAPI {
     return this.get({ path: `/shows/${id}` })
   }
 
-  getNextEpisode(id) {
-    return this.get({ path: `/shows/${id}/next_episode`, extended: true })
+  async getNextEpisode(id) {
+    try {
+      return await this.get({
+        path: `/shows/${id}/next_episode`,
+        extended: true
+      })
+    } catch (err) {
+      return {
+        title: undefined,
+        first_aired: undefined,
+        season: undefined,
+        number: undefined
+      }
+    }
   }
 
   getUserLists(token) {

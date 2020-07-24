@@ -29,23 +29,37 @@
       return {
         title: 'loading...',
         poster: undefined,
+        episodeTitle: 'tba',
+        airing: undefined,
+        season: undefined,
+        episode: undefined,
         countdown: '13d 20h 14m 48s'
       }
     },
     async mounted() {
-      const show = await this.trakt.getShow(this.slug)
-      console.log(show)
-
       const {
         title,
         ids: { tmdb }
-      } = show
-
+      } = await this.trakt.getShow(this.slug)
       const poster = await this.tmdb.getPosterPath(tmdb)
 
       // assign the show information to the state
       this.title = title
       this.poster = poster
+
+      // attempt to get the next episode
+      const {
+        title: episodeTitle,
+        first_aired,
+        season,
+        number
+      } = await this.trakt.getNextEpisode(this.slug)
+
+      // assign the show information to the state after checking if it's valid
+      if (episodeTitle) this.episodeTitle = title
+      this.airing = first_aired
+      this.season = season
+      this.number = number
     }
   }
 </script>
