@@ -2,6 +2,7 @@
   "name": "when-functions",
   "version": "0.0.0",
   "dependencies": {
-    "bent": "^7.3.7"
+    "bent": "^7.3.7",
+    "dotenv": "^8.2.0"
   }
 }
