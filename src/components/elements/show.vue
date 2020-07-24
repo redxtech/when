@@ -36,10 +36,16 @@
       const show = await this.trakt.getShow(this.slug)
       console.log(show)
 
-      const { title } = show
+      const {
+        title,
+        ids: { tmdb }
+      } = show
+
+      const poster = await this.tmdb.getPosterPath(tmdb)
 
       // assign the show information to the state
       this.title = title
+      this.poster = poster
     }
   }
 </script>
