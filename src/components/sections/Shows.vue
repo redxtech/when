@@ -28,11 +28,6 @@
     components: { Message, Show },
     data() {
       return {
-        trakt: new TraktAPI(
-          import.meta.env.VITE_TRAKT_API_KEY,
-          import.meta.env.VITE_ORIGIN,
-          import.meta.env.VITE_SERVER
-        ),
         loggedIn: false,
         slugs: []
       }
