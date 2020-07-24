@@ -112,6 +112,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "vue-router",
         "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.3"
+      ],
+      [
+        "vuex",
+        "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.4"
+      ],
+      [
+        "vuex-persist",
+        "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:2.2.0"
       ]
     ],
     "locationBlacklistData": [
@@ -141,7 +149,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tailwindcss", "npm:1.5.2"],
             ["vite", "npm:1.0.0-rc.3"],
             ["vue", "npm:3.0.0-rc.4"],
-            ["vue-router", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.3"]
+            ["vue-router", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.3"],
+            ["vuex", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.4"],
+            ["vuex-persist", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:2.2.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -6578,6 +6588,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["lodash.merge", [
+        ["npm:4.6.2", {
+          "packageLocation": "./.yarn/cache/lodash.merge-npm-4.6.2-77cb4416bf-4e2bb42a87.zip/node_modules/lodash.merge/",
+          "packageDependencies": [
+            ["lodash.merge", "npm:4.6.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["lodash.template", [
         ["npm:4.5.0", {
           "packageLocation": "./.yarn/cache/lodash.template-npm-4.5.0-5272df3039-e27068e20b.zip/node_modules/lodash.template/",
@@ -10443,6 +10462,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["vuex", [
+        ["virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.4", {
+          "packageLocation": "./.yarn/$$virtual/vuex-virtual-ef28193714/0/cache/vuex-npm-4.0.0-beta.4-473b1e8e4c-ffeac0c7f9.zip/node_modules/vuex/",
+          "packageDependencies": [
+            ["vuex", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.4"],
+            ["vue", "npm:3.0.0-rc.4"]
+          ],
+          "packagePeers": [
+            "vue"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["vuex-persist", [
+        ["virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:2.2.0", {
+          "packageLocation": "./.yarn/$$virtual/vuex-persist-virtual-431ce9f098/0/cache/vuex-persist-npm-2.2.0-c9a9298085-e541f07726.zip/node_modules/vuex-persist/",
+          "packageDependencies": [
+            ["vuex-persist", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:2.2.0"],
+            ["flatted", "npm:2.0.2"],
+            ["lodash.merge", "npm:4.6.2"],
+            ["vuex", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.4"]
+          ],
+          "packagePeers": [
+            "vuex"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["watchpack", [
         ["npm:1.7.2", {
           "packageLocation": "./.yarn/cache/watchpack-npm-1.7.2-2aa2a9a87f-a9d630dd29.zip/node_modules/watchpack/",
@@ -10554,7 +10601,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tailwindcss", "npm:1.5.2"],
             ["vite", "npm:1.0.0-rc.3"],
             ["vue", "npm:3.0.0-rc.4"],
-            ["vue-router", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.3"]
+            ["vue-router", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.3"],
+            ["vuex", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.4"],
+            ["vuex-persist", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:2.2.0"]
           ],
           "linkType": "SOFT",
         }]

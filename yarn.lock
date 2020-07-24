@@ -5659,6 +5659,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"lodash.merge@npm:^4.6.2":
+  version: 4.6.2
+  resolution: "lodash.merge@npm:4.6.2"
+  checksum: 4e2bb42a87a148991458d7c384bc197e96f7115e9536fc8e2c86ae9e99ce1c1f693ff15eb85761952535f48d72253aed8e673d9f32dde3e671cd91e3fde220a7
+  languageName: node
+  linkType: hard
+
 "lodash.template@npm:^4.5.0":
   version: 4.5.0
   resolution: "lodash.template@npm:4.5.0"
@@ -9159,6 +9166,27 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"vuex-persist@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "vuex-persist@npm:2.2.0"
+  dependencies:
+    flatted: ^2.0.0
+    lodash.merge: ^4.6.2
+  peerDependencies:
+    vuex: ">=2.5"
+  checksum: e541f07726bb7d70fd16a03a2ad65f130e03b8320c8510b3647e9d04576786aba9f0dcecfb21757b4b3c1098943f433ad41c344ed5f3d2546f0b72cd6aaea068
+  languageName: node
+  linkType: hard
+
+"vuex@npm:next":
+  version: 4.0.0-beta.4
+  resolution: "vuex@npm:4.0.0-beta.4"
+  peerDependencies:
+    vue: ^3.0.0-beta.10
+  checksum: ffeac0c7f972cc969e4518420cd3e7090230dd45c0b433cc518bfb5a0a2d03ff0acb5041a59eecfdb84965b555e2263f0d8d7b6de2ef545c155c84afb4f1348c
+  languageName: node
+  linkType: hard
+
 "watchpack-chokidar2@npm:^2.0.0":
   version: 2.0.0
   resolution: "watchpack-chokidar2@npm:2.0.0"
@@ -9271,6 +9299,8 @@ fsevents@~2.1.2:
     vite: ^1.0.0-rc.1
     vue: ^3.0.0-rc.1
     vue-router: next
+    vuex: next
+    vuex-persist: ^2.2.0
   languageName: unknown
   linkType: soft
 
