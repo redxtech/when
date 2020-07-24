@@ -37,3 +37,8 @@ export const revoke = async token => {
     headers
   )
 }
+
+export const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type'
+}

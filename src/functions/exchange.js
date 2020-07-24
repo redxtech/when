@@ -1,12 +1,18 @@
-import { exchange } from './utils/auth.js'
+import { exchange, corsHeaders } from './utils/auth.js'
 
 exports.handler = async event => {
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: corsHeaders
+    }
+  }
+
+  const { code } = JSON.parse(event.body)
+
   return {
     statusCode: 200,
-    body: JSON.stringify(
-      await exchange(event.queryStringParameters.code),
-      null,
-      2
-    )
+    headers: corsHeaders,
+    body: JSON.stringify(await exchange(code), null, 2)
   }
 }
