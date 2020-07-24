@@ -123,11 +123,49 @@ export default class TraktAPI {
   }
 
   async getOAuthToken(code) {
-    return this.postServer('exchange', { code })
+    try {
+      const {
+        auth: { access_token, refresh_token }
+      } = await this.postServer('exchange', { code })
+
+      return {
+        token: access_token,
+        refresh: refresh_token
+      }
+    } catch (err) {
+      return {
+        token: undefined,
+        refresh: undefined
+      }
+    }
+  }
+
+  async refreshOAuthToken(refresh) {
+    try {
+      const {
+        auth: { access_token, refresh_token }
+      } = await this.postServer('refresh', { refresh_token: refresh })
+
+      return {
+        token: access_token,
+        refresh: refresh_token
+      }
+    } catch (err) {
+      return {
+        token: undefined,
+        refresh: undefined
+      }
+    }
   }
 
   async revokeOAuthToken(token) {
-    return this.postServer('revoke', { token })
+    try {
+      return this.postServer('revoke', { token })
+    } catch (err) {
+      return {
+        status: 'failed'
+      }
+    }
   }
 
   async checkOAuthToken(token) {
