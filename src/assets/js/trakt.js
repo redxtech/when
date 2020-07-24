@@ -3,10 +3,14 @@ import bent from 'bent'
 export default class TraktAPI {
   // private fields
   api_key
+  origin
+  server
 
   constructor(api_key) {
     // initialize the instance with the api key
     this.api_key = api_key
+    this.origin = import.meta.env.VITE_ORIGIN
+    this.server = import.meta.env.VITE_SERVER
   }
 
   createHeaders(token = false) {
@@ -53,6 +57,15 @@ export default class TraktAPI {
       console.error(message)
       throw new Error(message)
     }
+  }
+
+  postServer(path, body) {
+    return bent(
+      `${this.server}/.netlify/functions/`,
+      'POST',
+      'json',
+      200
+    )(path, body)
   }
 
   getShow(id) {
@@ -109,16 +122,16 @@ export default class TraktAPI {
     })
   }
 
-  getOAuthURL(origin) {
-    return `https://trakt.tv/oauth/authorize?response_type=code&client_id=${this.api_key}&redirect_uri=${origin}`
+  getOAuthURL() {
+    return `https://trakt.tv/oauth/authorize?response_type=code&client_id=${this.api_key}&redirect_uri=${this.origin}`
   }
 
   async getOAuthToken(code) {
-    return ''
+    return this.postServer('exchange', { code })
   }
 
   async revokeOAuthToken(token) {
-    return ''
+    return this.postServer('revoke', { token })
   }
 
   async checkOAuthToken(token) {
