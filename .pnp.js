@@ -50,6 +50,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:10.1.0"
       ],
       [
+        "bent",
+        "npm:7.3.7"
+      ],
+      [
         "eslint",
         "npm:7.5.0"
       ],
@@ -118,6 +122,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@vue/compiler-sfc", "virtual:451d253bd7b869442586393ebea7720a71dbef3d627c2d429dbd28747e7c2c159ec2d677b19e731a8756e2a0e7c5cc3d45624c362c4e3244220597cedf5030e6#npm:3.0.0-rc.4"],
             ["autoprefixer", "npm:9.8.5"],
             ["babel-eslint", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:10.1.0"],
+            ["bent", "npm:7.3.7"],
             ["eslint", "npm:7.5.0"],
             ["eslint-config-prettier", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:6.11.0"],
             ["eslint-plugin-prettier", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:3.1.4"],
@@ -1104,6 +1109,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["bent", [
+        ["npm:7.3.7", {
+          "packageLocation": "./.yarn/cache/bent-npm-7.3.7-ba677420b2-b18ab9e365.zip/node_modules/bent/",
+          "packageDependencies": [
+            ["bent", "npm:7.3.7"],
+            ["bytesish", "npm:0.4.2"],
+            ["caseless", "npm:0.12.0"],
+            ["is-stream", "npm:2.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["big.js", [
         ["npm:5.2.2", {
           "packageLocation": "./.yarn/cache/big.js-npm-5.2.2-e147c30820-ea33d7d256.zip/node_modules/big.js/",
@@ -1205,6 +1222,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/bytes-npm-3.1.0-19c5b15405-c3f64645ef.zip/node_modules/bytes/",
           "packageDependencies": [
             ["bytes", "npm:3.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["bytesish", [
+        ["npm:0.4.2", {
+          "packageLocation": "./.yarn/cache/bytesish-npm-0.4.2-3331214738-d8c049105c.zip/node_modules/bytesish/",
+          "packageDependencies": [
+            ["bytesish", "npm:0.4.2"]
           ],
           "linkType": "HARD",
         }]
@@ -6122,6 +6148,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@vue/compiler-sfc", "virtual:451d253bd7b869442586393ebea7720a71dbef3d627c2d429dbd28747e7c2c159ec2d677b19e731a8756e2a0e7c5cc3d45624c362c4e3244220597cedf5030e6#npm:3.0.0-rc.4"],
             ["autoprefixer", "npm:9.8.5"],
             ["babel-eslint", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:10.1.0"],
+            ["bent", "npm:7.3.7"],
             ["eslint", "npm:7.5.0"],
             ["eslint-config-prettier", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:6.11.0"],
             ["eslint-plugin-prettier", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:3.1.4"],

@@ -832,6 +832,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bent@npm:^7.3.7":
+  version: 7.3.7
+  resolution: "bent@npm:7.3.7"
+  dependencies:
+    bytesish: ^0.4.1
+    caseless: ~0.12.0
+    is-stream: ^2.0.0
+  checksum: b18ab9e3654a070dad73a702aa44199599f9284992149fcc4b58965554817fa5323d23f7c6f4e4304e16b51b2ac1023a98e45f6474e83bfdf50f87148f6715bc
+  languageName: node
+  linkType: hard
+
 "big.js@npm:^5.2.2":
   version: 5.2.2
   resolution: "big.js@npm:5.2.2"
@@ -920,6 +931,13 @@ __metadata:
   version: 3.1.0
   resolution: "bytes@npm:3.1.0"
   checksum: c3f64645ef37922c8194fef88a052de2a28101882dfdf8a225493888c4941a26ea15164957e7492e5c5e3a8e98ee6276f4834efacb68e2d8ad4d91f903250b6c
+  languageName: node
+  linkType: hard
+
+"bytesish@npm:^0.4.1":
+  version: 0.4.2
+  resolution: "bytesish@npm:0.4.2"
+  checksum: d8c049105c79077eea515a12f73f5a514131609f729beb4d4804333f999b5a61fd80f5bb5e9b67959c2e5cb14b2f99b1f3c822f0a3c6f62b2d859697f356ae7f
   languageName: node
   linkType: hard
 
@@ -5318,6 +5336,7 @@ fsevents@~2.1.2:
     "@vue/compiler-sfc": ^3.0.0-rc.1
     autoprefixer: ^9.8.5
     babel-eslint: ^10.1.0
+    bent: ^7.3.7
     eslint: ^7.5.0
     eslint-config-prettier: ^6.11.0
     eslint-plugin-prettier: ^3.1.4
