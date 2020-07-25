@@ -1,5 +1,5 @@
 <template>
-  <div class="box" :class="{ 'p-4': !noPadding }">
+  <div class="box" :class="{ 'p-3': !noPadding }">
     <slot />
   </div>
 </template>
