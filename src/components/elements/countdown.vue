@@ -34,12 +34,22 @@
             s: Math.floor((difference / 1000) % 60)
           }
 
-          return Object.keys(parts)
-            .map(part => {
-              if (!parts[part]) return
-              return `${parts[part]}${part}`
-            })
-            .join(' ')
+          const segments = []
+
+          for (const key of Object.keys(parts)) {
+            const part = `${parts[key]
+              .toString()
+              .padStart(key === 'd' ? 0 : 2, '0')}${key}`
+            if (parts[key]) {
+              segments.push(part)
+            } else {
+              if (segments.length !== 0) {
+                segments.push(part)
+              }
+            }
+          }
+
+          return segments.join(' ')
         } else {
           if (!this.aired) {
             this.$emit('aired')
