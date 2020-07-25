@@ -2,9 +2,9 @@
   <box class="message" :style="`order: ${first ? '1' : '10000000000'};`">
     <div class="poster">
       <a v-if="href" :href="href">
-        <img src="../../assets/img/trakt-icon-red.svg" alt="trakt icon" />
+        <img src="../../assets/img/trakt.png" alt="trakt icon" />
       </a>
-      <img v-else src="../../assets/img/trakt-icon-red.svg" alt="trakt icon" />
+      <img v-else src="../../assets/img/trakt.png" alt="trakt icon" />
     </div>
     <div class="details">
       <template v-if="href">
@@ -27,8 +27,7 @@
   import Box from '../../lib/elements/Box.vue'
   import ElementTitle from '../../lib/titles/ElementTitle.vue'
 
-  // TODO: make trakt link actually the login link
-  // TODO: fix spacing between title and message
+  // TODO: switch trakt logo to svg
 
   export default {
     name: 'Show',
@@ -61,7 +60,9 @@
     @apply flex flex-row flex-no-wrap items-center content-center justify-start cursor-pointer;
 
     .poster {
-      @apply w-20 flex-none;
+      @apply w-20 flex-none flex flex-col items-center content-center justify-around;
+
+      min-height: 120px;
 
       img {
         @apply object-cover rounded;
