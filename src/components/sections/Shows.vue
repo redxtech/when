@@ -5,6 +5,7 @@
       v-if="loggedIn"
       title="log out."
       message="click to log out."
+      clickable
       @click="logout"
     />
     <message

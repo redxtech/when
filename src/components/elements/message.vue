@@ -6,7 +6,7 @@
       </a>
       <img v-else src="../../assets/img/trakt.png" alt="trakt icon" />
     </div>
-    <div class="details">
+    <div class="details" :class="clickableStyle">
       <template v-if="href">
         <a v-if="href" :href="href">
           <element-title size="2xl">{{ title }}</element-title>
@@ -46,10 +46,22 @@
         required: false,
         default: ''
       },
+      clickable: {
+        type: Boolean,
+        required: false,
+        default: false
+      },
       first: {
         type: Boolean,
         required: false,
         default: false
+      }
+    },
+    data() {
+      return {
+        clickableStyle: {
+          clickable: this.clickable
+        }
       }
     }
   }
@@ -77,6 +89,15 @@
       }
 
       a:hover {
+        @apply underline;
+      }
+    }
+  }
+
+  .clickable {
+    h3,
+    span {
+      &:hover {
         @apply underline;
       }
     }
