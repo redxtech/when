@@ -29,7 +29,8 @@ module.exports = {
         sans: ['TT Norms', 'Inter var', ...defaultTheme.fontFamily.sans]
       },
       screens: {
-        xs: '425px'
+        xs: '425px',
+        '2xl': '1440px'
       },
       spacing: {
         '18': '4.5rem',

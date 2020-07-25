@@ -19,7 +19,7 @@
 
 <style scoped>
   .container {
-    @apply max-w-screen-xl px-4;
+    @apply max-w-screen-2xl px-4;
 
     /* Small (sm) */
     @media (min-width: 640px) {
