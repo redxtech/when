@@ -8,7 +8,12 @@
     <div class="details">
       <element-title size="2xl">{{ title }}</element-title>
       <span class="countdown">
-        <countdown v-if="airing" :airing="airing" />
+        <countdown
+          v-if="airing"
+          :airing="airing"
+          :aired="aired"
+          @aired="onAired"
+        />
         <template v-else-if="status === 'returning series'">
           next episode to be announced.
         </template>
@@ -41,6 +46,7 @@
         airing: undefined,
         season: undefined,
         episode: undefined,
+        aired: false,
         countdown: '13d 20h 14m 48s'
       }
     },
@@ -57,19 +63,34 @@
       this.poster = poster
       this.status = status
 
-      // attempt to get the next episode
-      const {
-        title: episodeTitle,
-        first_aired,
-        season,
-        number
-      } = await this.trakt.getNextEpisode(this.slug)
+      // fetch the next episode
+      await this.getNextEpisode()
+    },
+    methods: {
+      onAired() {
+        this.aired = true
+        this.getNextEpisode()
+      },
+      async getNextEpisode() {
+        // attempt to get the next episode
+        const {
+          title: episodeTitle,
+          first_aired,
+          season,
+          number
+        } = await this.trakt.getNextEpisode(this.slug)
 
-      // assign the show information to the state after checking if it's valid
-      if (episodeTitle) this.episodeTitle = title
-      this.airing = first_aired
-      this.season = season
-      this.number = number
+        // if a new episode has aired switch the aired property
+        if (this.airing !== first_aired) {
+          this.aired = false
+        }
+
+        // assign the show information to the state after checking if it's valid
+        if (episodeTitle) this.episodeTitle = episodeTitle
+        this.airing = first_aired
+        this.season = season
+        this.number = number
+      }
     }
   }
 </script>
