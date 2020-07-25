@@ -1,5 +1,5 @@
 <template>
-  <box class="show">
+  <box class="show" :style="`order: ${order};`">
     <div class="poster">
       <!--suppress HtmlUnknownTarget -->
       <img v-if="poster" :src="poster" :alt="title" />
@@ -46,8 +46,43 @@
         airing: undefined,
         season: undefined,
         episode: undefined,
-        aired: false,
-        countdown: '13d 20h 14m 48s'
+        aired: false
+      }
+    },
+    computed: {
+      order() {
+        const difference = +new Date(this.airing) - +new Date()
+
+        if (this.airing && difference > 0) {
+          const d = Math.floor(difference / (1000 * 60 * 60 * 24))
+          const h = Math.floor((difference / (1000 * 60 * 60)) % 24)
+          const m = Math.floor((difference / 1000 / 60) % 60)
+          const s = Math.floor((difference / 1000) % 60)
+
+          return `${d}${this.pad(h)}${this.pad(m)}${this.pad(s)}`
+        } else {
+          let order = 1000000000
+
+          switch (this.status) {
+            case 'ended':
+              order -= 1
+              break
+            case 'canceled':
+              order -= 2
+              break
+            case 'planned':
+              order -= 3
+              break
+            case 'in production':
+              order -= 4
+              break
+            case 'returning series':
+              order -= 5
+              break
+          }
+
+          return order.toString()
+        }
       }
     },
     async mounted() {
@@ -90,6 +125,9 @@
         this.airing = first_aired
         this.season = season
         this.number = number
+      },
+      pad(number) {
+        return number.toString().padStart(2, '0')
       }
     }
   }

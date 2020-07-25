@@ -1,5 +1,5 @@
 <template>
-  <box class="message">
+  <box class="message" :style="`order: ${first ? '1' : '10000000000'};`">
     <div class="poster">
       <a v-if="href" :href="href">
         <img src="../../assets/img/trakt-icon-red.svg" alt="trakt icon" />
@@ -46,6 +46,11 @@
         type: String,
         required: false,
         default: ''
+      },
+      first: {
+        type: Boolean,
+        required: false,
+        default: false
       }
     }
   }
