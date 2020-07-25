@@ -24,8 +24,6 @@
   import Message from '../elements/message.vue'
   import Show from '../elements/show.vue'
 
-  import TraktAPI from '../../assets/js/trakt.js'
-
   export default {
     name: 'Shows',
     components: { Message, Show },
@@ -59,6 +57,9 @@
             this.setToken({ token, refresh })
             this.loggedIn = true
 
+            // update the slugs list
+            await this.updateSlugs()
+
             // after successful authentication clear the code from the url
             this.$router.push({ path: this.$route.path })
           }
@@ -73,13 +74,7 @@
           const userLists = await this.trakt.getUserLists(this.token)
 
           if (this.trakt.userHasWhenList(userLists)) {
-            // fetch the shows in the when list
-            const shows = await this.trakt.getUserWhenListItems(this.token)
-
-            // map the show information to an array of slugs
-            this.slugs = shows.map(s => s.show.ids.slug)
-
-            // TODO: add functionality to gracefully diff the slugs into the store
+            await this.updateSlugs()
           } else {
             // TODO: implement creation of user when list
             console.log('user does not have when list')
@@ -98,11 +93,21 @@
       }
     },
     methods: {
+      async updateSlugs() {
+        // fetch the shows in the when list
+        const shows = await this.trakt.getUserWhenListItems(this.token)
+
+        // map the show information to an array of slugs
+        this.slugs = shows.map(s => s.show.ids.slug)
+
+        // TODO: add functionality to gracefully diff the slugs into the store
+      },
       async logout() {
         // revoke the token
         await this.trakt.revokeOAuthToken(this.token)
         this.invalidateToken()
         this.loggedIn = false
+        this.slugs = []
       },
       ...mapActions(['setToken', 'invalidateToken'])
     }
