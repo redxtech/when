@@ -44,6 +44,9 @@
       if (this.token === undefined) {
         this.loggedIn = false
 
+        // get the default when list
+        await this.useDefaultWhenList()
+
         // check for oauth code from redirect
         const { code } = this.$route.query
 
@@ -88,6 +91,8 @@
 
             // save the tokens to the store to trigger refresh
             this.setToken({ token, refresh })
+          } else {
+            this.invalidateToken()
           }
         }
       }
@@ -102,12 +107,23 @@
 
         // TODO: add functionality to gracefully diff the slugs into the store
       },
+      async useDefaultWhenList() {
+        // fetch the shows in the default when list
+        const shows = await this.trakt.getDefaultListItems()
+
+        // map the show information to an array of slugs
+        this.slugs = shows.map(s => s.show.ids.slug)
+
+        // TODO: add functionality to gracefully diff the slugs into the store
+      },
       async logout() {
         // revoke the token
         await this.trakt.revokeOAuthToken(this.token)
         this.invalidateToken()
         this.loggedIn = false
-        this.slugs = []
+
+        // reset to default when list
+        await this.useDefaultWhenList()
       },
       ...mapActions(['setToken', 'invalidateToken'])
     }
