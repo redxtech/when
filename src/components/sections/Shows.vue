@@ -3,6 +3,7 @@
     <show v-for="slug in slugs" :key="slug" :slug="slug" />
     <message
       v-if="loggedIn"
+      key="when-logout"
       title="log out."
       message="click to log out."
       clickable
@@ -10,6 +11,7 @@
     />
     <message
       v-else
+      key="when-login"
       title="log in."
       message="click to log in."
       :href="loginUrl"
