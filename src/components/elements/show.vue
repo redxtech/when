@@ -46,12 +46,13 @@
         airing: undefined,
         season: undefined,
         episode: undefined,
-        aired: false
+        aired: false,
+        currentDate: new Date()
       }
     },
     computed: {
       order() {
-        const difference = +new Date(this.airing) - +new Date()
+        const difference = +new Date(this.airing) - +this.currentDate
 
         if (this.airing && difference > 0) {
           const d = Math.floor(difference / (1000 * 60 * 60 * 24))
@@ -125,6 +126,12 @@
         this.airing = first_aired
         this.season = season
         this.number = number
+
+        // refresh the date to update order
+        this.refreshDate()
+      },
+      refreshDate() {
+        this.currentDate = new Date()
       },
       pad(number) {
         return number.toString().padStart(2, '0')
