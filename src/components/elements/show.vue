@@ -37,6 +37,7 @@
         required: true
       }
     },
+    emits: ['order'],
     data() {
       return {
         title: 'loading...',
@@ -84,6 +85,11 @@
 
           return order.toString()
         }
+      }
+    },
+    watch: {
+      order(curr) {
+        this.$emit('order', curr)
       }
     },
     async mounted() {
