@@ -1,5 +1,5 @@
 <template>
-  <box class="show" :style="`order: ${order};`">
+  <box class="show">
     <div class="poster">
       <!--suppress HtmlUnknownTarget -->
       <img v-if="poster" :src="poster" :alt="title" />
@@ -83,7 +83,7 @@
               break
           }
 
-          return order.toString()
+          return order
         }
       }
     },

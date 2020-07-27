@@ -5,9 +5,10 @@
     class="shows grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
   >
     <show
-      v-for="slug in slugs"
+      v-for="slug in sortedSlugs"
       :key="slug"
       :slug="slug"
+      @order="orders[slug] = $event"
     />
     <message
       v-if="loggedIn"
@@ -31,6 +32,7 @@
 
   import Message from '../elements/message.vue'
   import Show from '../elements/show.vue'
+  import { reactive } from 'vue'
 
   export default {
     name: 'Shows',
@@ -38,10 +40,14 @@
     data() {
       return {
         loggedIn: false,
-        slugs: []
+        slugs: [],
+        orders: reactive({})
       }
     },
     computed: {
+      sortedSlugs() {
+        return [...this.slugs].sort((a, b) => this.orders[a] - this.orders[b])
+      },
       loginUrl() {
         return this.trakt.getOAuthURL()
       },
