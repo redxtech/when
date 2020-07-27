@@ -56,34 +56,18 @@
         const difference = +new Date(this.airing) - +this.currentDate
 
         if (this.airing && difference > 0) {
-          const d = Math.floor(difference / (1000 * 60 * 60 * 24))
-          const h = Math.floor((difference / (1000 * 60 * 60)) % 24)
-          const m = Math.floor((difference / 1000 / 60) % 60)
-          const s = Math.floor((difference / 1000) % 60)
-
-          return `${d}${this.pad(h)}${this.pad(m)}${this.pad(s)}`
+          return difference
         } else {
-          let order = 1000000000
-
-          switch (this.status) {
-            case 'ended':
-              order -= 1
-              break
-            case 'canceled':
-              order -= 2
-              break
-            case 'planned':
-              order -= 3
-              break
-            case 'in production':
-              order -= 4
-              break
-            case 'returning series':
-              order -= 5
-              break
-          }
-
-          return order
+          return (
+            {
+              'returning series': -1,
+              'in production': -2,
+              planned: -3,
+              canceled: -4,
+              ended: -5,
+              default: -2
+            }?.[this.status] || -2
+          )
         }
       }
     },

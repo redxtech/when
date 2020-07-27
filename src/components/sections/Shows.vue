@@ -32,7 +32,6 @@
 
   import Message from '../elements/message.vue'
   import Show from '../elements/show.vue'
-  import { reactive } from 'vue'
 
   export default {
     name: 'Shows',
@@ -41,12 +40,16 @@
       return {
         loggedIn: false,
         slugs: [],
-        orders: reactive({})
+        orders: {}
       }
     },
     computed: {
       sortedSlugs() {
-        return [...this.slugs].sort((a, b) => this.orders[a] - this.orders[b])
+        return [...this.slugs].sort((a, b) =>
+          this.orders[a] > 0 && this.orders[b] > 0
+            ? this.orders[a] - this.orders[b]
+            : this.orders[b] - this.orders[a]
+        )
       },
       loginUrl() {
         return this.trakt.getOAuthURL()
