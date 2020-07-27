@@ -1,6 +1,14 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <show v-for="slug in slugs" :key="slug" :slug="slug" />
+  <transition-group
+    name="shows div"
+    tag="div"
+    class="shows grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+  >
+    <show
+      v-for="slug in slugs"
+      :key="slug"
+      :slug="slug"
+    />
     <message
       v-if="loggedIn"
       key="when-logout"
@@ -16,7 +24,7 @@
       message="click to log in."
       :href="loginUrl"
     />
-  </div>
+  </transition-group>
 </template>
 <script>
   import { mapGetters, mapActions } from 'vuex'
@@ -129,3 +137,9 @@
     }
   }
 </script>
+
+<style scoped>
+  .shows div {
+    @apply transform transition-all ease-in-out duration-700;
+  }
+</style>
