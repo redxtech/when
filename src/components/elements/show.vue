@@ -63,9 +63,9 @@
               'returning series': -1,
               'in production': -2,
               planned: -3,
-              canceled: -4,
-              ended: -5,
-              default: -2
+              'not found': -4,
+              canceled: -5,
+              ended: -6
             }?.[this.status] || -2
           )
         }
@@ -77,20 +77,26 @@
       }
     },
     async mounted() {
-      const {
-        title,
-        status,
-        ids: { tmdb }
-      } = await this.trakt.getShow(this.slug, true)
-      const poster = await this.tmdb.getPosterPath(tmdb)
+      try {
+        const {
+          title,
+          status,
+          ids: { tmdb }
+        } = await this.trakt.getShow(this.slug, true)
+        const poster = await this.tmdb.getPosterPath(tmdb)
 
-      // assign the show information to the state
-      this.title = title
-      this.poster = poster
-      this.status = status
+        // assign the show information to the state
+        this.title = title
+        this.poster = poster
+        this.status = status
 
-      // fetch the next episode
-      await this.getNextEpisode()
+        // fetch the next episode
+        await this.getNextEpisode()
+      } catch (err) {
+        // account for the error
+        this.title = 'not found.'
+        this.status = 'not found'
+      }
     },
     methods: {
       onAired() {

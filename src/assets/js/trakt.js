@@ -75,8 +75,16 @@ export default class TraktAPI {
     )(path, body)
   }
 
-  getShow(id, extended = false) {
-    return this.get({ path: `/shows/${id}`, extended })
+  // function to get a show's summary with optional extended info
+  async getShow(id, extended = false) {
+    try {
+      return this.get({
+        path: `/shows/${id}`,
+        extended
+      })
+    } catch (err) {
+      throw new TraktError(err, 'getShow', { id, extended }, err.statusCode)
+    }
   }
 
   async getNextEpisode(id) {
