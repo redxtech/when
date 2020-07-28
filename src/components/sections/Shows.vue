@@ -82,14 +82,18 @@
       } else {
         // if there is an oauth token check to see if it's valid
         if (await this.trakt.checkOAuthToken(this.token)) {
-          // check to see if the user already has a when list
-          const userLists = await this.trakt.getUserLists(this.token)
+          try {
+            // check to see if the user already has a when list
+            const userLists = await this.trakt.getUserLists(this.token)
 
-          if (this.trakt.userHasWhenList(userLists)) {
-            await this.updateSlugs()
-          } else {
-            // TODO: implement creation of user when list
-            console.log('user does not have when list')
+            if (this.trakt.userHasWhenList(userLists)) {
+              await this.updateSlugs()
+            } else {
+              // TODO: implement creation of user when list
+              console.log('user does not have when list')
+            }
+          } catch (err) {
+            console.error(err)
           }
         } else {
           // attempt to obtain a new token with the refresh token

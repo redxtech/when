@@ -99,8 +99,17 @@ export default class TraktAPI {
     }
   }
 
-  getUserLists(token) {
-    return this.get({ path: '/users/me/lists', token })
+  async getUserLists(token) {
+    try {
+      return this.get({ path: '/users/me/lists', token })
+    } catch (err) {
+      throw new TraktError(
+        err,
+        'getUserLists',
+        { token: '[redacted]' },
+        err.statusCode
+      )
+    }
   }
 
   getUserWhenListItems(token) {
