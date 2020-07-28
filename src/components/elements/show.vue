@@ -3,7 +3,7 @@
     <div class="poster">
       <!--suppress HtmlUnknownTarget -->
       <img v-if="poster" :src="poster" :alt="title" />
-      <img v-else src="../../assets/img/trakt-icon-red.svg" alt="trakt icon" />
+      <img v-else src="../../assets/img/trakt.png" alt="trakt icon" />
     </div>
     <div class="details">
       <element-title size="2xl">{{ title }}</element-title>
