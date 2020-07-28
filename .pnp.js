@@ -54,6 +54,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:7.3.7"
       ],
       [
+        "dotenv",
+        "npm:8.2.0"
+      ],
+      [
         "eslint",
         "npm:7.5.0"
       ],
@@ -135,6 +139,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["autoprefixer", "npm:9.8.5"],
             ["babel-eslint", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:10.1.0"],
             ["bent", "npm:7.3.7"],
+            ["dotenv", "npm:8.2.0"],
             ["eslint", "npm:7.5.0"],
             ["eslint-config-prettier", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:6.11.0"],
             ["eslint-plugin-prettier", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:3.1.4"],
@@ -10587,6 +10592,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["autoprefixer", "npm:9.8.5"],
             ["babel-eslint", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:10.1.0"],
             ["bent", "npm:7.3.7"],
+            ["dotenv", "npm:8.2.0"],
             ["eslint", "npm:7.5.0"],
             ["eslint-config-prettier", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:6.11.0"],
             ["eslint-plugin-prettier", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:3.1.4"],
