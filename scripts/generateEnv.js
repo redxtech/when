@@ -8,7 +8,8 @@ const main = () => {
     TRAKT_API_SECRET,
     VITE_TMDB_KEY,
     VITE_ORIGIN,
-    VITE_SERVER
+    VITE_SERVER,
+    VITE_ENDPOINT
   } = process.env
 
   const variables = {
@@ -16,7 +17,8 @@ const main = () => {
     TRAKT_API_SECRET,
     VITE_TMDB_KEY,
     VITE_ORIGIN,
-    VITE_SERVER
+    VITE_SERVER,
+    VITE_ENDPOINT
   }
 
   const content = Object.keys(variables)

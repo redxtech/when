@@ -23,12 +23,19 @@ export default class TraktAPI {
   api_key
   origin
   server
+  endpoint
 
-  constructor(api_key, origin, server = origin) {
+  constructor(
+    api_key,
+    origin,
+    server = origin,
+    endpoint = '/.netlify/functions/'
+  ) {
     // initialize the instance with the api key
     this.api_key = api_key
     this.origin = origin
     this.server = server
+    this.endpoint = endpoint
   }
 
   createHeaders(token = false) {
@@ -74,7 +81,7 @@ export default class TraktAPI {
   // function to make a post request to the oauth endpoints
   async postServer(path, body) {
     return bent(
-      `${this.server}/.netlify/functions/`,
+      `${this.server}${this.endpoint}`,
       'POST',
       'json',
       200
