@@ -6,8 +6,6 @@ const vuexLocal = new VuexPersist({
   storage: window.localStorage
 })
 
-// TODO: store token expiry date as well
-
 export default new Vuex.Store({
   state: {
     token: undefined,
@@ -16,7 +14,8 @@ export default new Vuex.Store({
   },
   getters: {
     token: state => state.token,
-    refresh: state => state.refresh
+    refresh: state => state.refresh,
+    loggedIn: state => state.token !== undefined
   },
   mutations: {
     setToken: (state, token) => (state.token = token),

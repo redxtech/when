@@ -38,7 +38,6 @@
     components: { Message, Show },
     data() {
       return {
-        loggedIn: false,
         slugs: [],
         orders: {}
       }
@@ -54,13 +53,11 @@
       loginUrl() {
         return this.trakt.getOAuthURL()
       },
-      ...mapGetters(['token', 'refresh'])
+      ...mapGetters(['token', 'refresh', 'loggedIn'])
     },
     async mounted() {
       // if the token is undefined, the user is logged out
       if (this.token === undefined) {
-        this.loggedIn = false
-
         // get the default when list
         await this.useDefaultWhenList()
 
@@ -75,7 +72,6 @@
           // if it's successful, save the token to the store
           if (token) {
             this.setToken({ token, refresh })
-            this.loggedIn = true
 
             // update the slugs list
             await this.updateSlugs()
@@ -87,9 +83,6 @@
       } else {
         // if there is an oauth token check to see if it's valid
         if (await this.trakt.checkOAuthToken(this.token)) {
-          // set the status to logged in
-          this.loggedIn = true
-
           // check to see if the user already has a when list
           const userLists = await this.trakt.getUserLists(this.token)
 
@@ -137,7 +130,6 @@
         // revoke the token
         await this.trakt.revokeOAuthToken(this.token)
         this.invalidateToken()
-        this.loggedIn = false
 
         // reset to default when list
         await this.useDefaultWhenList()
