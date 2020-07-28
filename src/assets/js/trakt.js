@@ -157,10 +157,14 @@ export default class TraktAPI {
     })
   }
 
-  getDefaultListItems() {
-    return this.get({
-      path: '/users/redxtech/lists/default-when-list/items/shows'
-    })
+  async getDefaultListItems() {
+    try {
+      return this.get({
+        path: '/users/redxtech/lists/default-when-list/items/shows'
+      })
+    } catch (err) {
+      throw new TraktError(err, 'getDefaultWhenListItems', {}, err.statusCode)
+    }
   }
 
   getOAuthURL() {

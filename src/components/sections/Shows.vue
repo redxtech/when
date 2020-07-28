@@ -127,11 +127,17 @@
         }
       },
       async useDefaultWhenList() {
-        // fetch the shows in the default when list
-        const shows = await this.trakt.getDefaultListItems()
+        try {
+          // fetch the shows in the default when list
+          const shows = await this.trakt.getDefaultListItems()
 
-        // map the show information to an array of slugs
-        this.addSlugs(shows.map(s => s.show.ids.slug))
+          // map the show information to an array of slugs
+          this.addSlugs(shows.map(s => s.show.ids.slug))
+        } catch (err) {
+          console.log(err)
+
+          this.addSlugs(['mr-robot', 'dave', 'the-100', 'euphoria'])
+        }
       },
       async logout() {
         // revoke the token
