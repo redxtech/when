@@ -14,7 +14,7 @@ const headers = {
   'Content-Type': 'application/json'
 }
 
-export const exchange = async code => {
+export const exchangeHandler = async code => {
   try {
     return post(
       'token',
@@ -29,18 +29,17 @@ export const exchange = async code => {
   } catch (err) {
     return {
       access_token: undefined,
-      refresh_token: undefined,
-      expires_in: undefined
+      refresh_token: undefined
     }
   }
 }
 
-export const refresh = async refresh_token => {
+export const refreshHandler = async refresh => {
   try {
     return post(
       'token',
       {
-        refresh_token,
+        refresh_token: refresh,
         redirect_uri: process.env.VITE_ORIGIN,
         grant_type: 'refresh_token',
         ...body
@@ -50,13 +49,12 @@ export const refresh = async refresh_token => {
   } catch (err) {
     return {
       access_token: undefined,
-      refresh_token: undefined,
-      expires_in: undefined
+      refresh_token: undefined
     }
   }
 }
 
-export const revoke = async token => {
+export const revokeHandler = async token => {
   return post(
     'revoke',
     {

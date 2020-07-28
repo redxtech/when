@@ -1,14 +1,14 @@
-import { refresh, response } from './utils/auth.js'
+import { refreshHandler, response } from './utils/auth.js'
 
 exports.handler = async event => {
   if (event.httpMethod === 'OPTIONS') {
     return response
   }
 
-  const { refresh_token } = JSON.parse(event.body)
+  const { refresh_token: token } = JSON.parse(event.body)
 
   try {
-    const auth = await refresh(refresh_token)
+    const auth = await refreshHandler(token)
 
     return {
       ...response,

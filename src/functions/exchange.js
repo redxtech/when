@@ -1,4 +1,4 @@
-import { exchange, response } from './utils/auth.js'
+import { exchangeHandler, response } from './utils/auth.js'
 
 exports.handler = async event => {
   if (event.httpMethod === 'OPTIONS') {
@@ -8,7 +8,7 @@ exports.handler = async event => {
   const { code } = JSON.parse(event.body)
 
   try {
-    const auth = await exchange(code)
+    const auth = await exchangeHandler(code)
 
     return {
       ...response,

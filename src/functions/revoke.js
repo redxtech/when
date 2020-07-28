@@ -1,4 +1,4 @@
-import { revoke, response } from './utils/auth.js'
+import { revokeHandler, response } from './utils/auth.js'
 
 exports.handler = async event => {
   if (event.httpMethod === 'OPTIONS') {
@@ -8,7 +8,7 @@ exports.handler = async event => {
   const { token } = JSON.parse(event.body)
 
   try {
-    await revoke(token)
+    await revokeHandler(token)
 
     return {
       ...response,
