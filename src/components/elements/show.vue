@@ -106,27 +106,29 @@
         this.getNextEpisode()
       },
       async getNextEpisode() {
-        // attempt to get the next episode
-        const {
-          title: episodeTitle,
-          first_aired,
-          season,
-          number
-        } = await this.trakt.getNextEpisode(this.slug)
+        try {
+          // attempt to get the next episode
+          const {
+            title: episodeTitle,
+            first_aired,
+            season,
+            number
+          } = await this.trakt.getNextEpisode(this.slug)
 
-        // if a new episode has aired switch the aired property
-        if (this.airing !== first_aired) {
-          this.aired = false
-        }
+          // if a new episode has aired switch the aired property
+          if (this.airing !== first_aired) {
+            this.aired = false
+          }
 
-        // assign the show information to the state after checking if it's valid
-        if (episodeTitle) this.episodeTitle = episodeTitle
-        this.airing = first_aired
-        this.season = season
-        this.number = number
+          // assign the show information to the state after checking if it's valid
+          if (episodeTitle) this.episodeTitle = episodeTitle
+          this.airing = first_aired
+          this.season = season
+          this.number = number
 
-        // refresh the date to update order
-        this.refreshDate()
+          // refresh the date to update order
+          this.refreshDate()
+        } catch {}
       },
       refreshDate() {
         this.currentDate = new Date()

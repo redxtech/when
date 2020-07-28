@@ -15,6 +15,7 @@ class TraktError extends Error {
     }
 
     this.name = 'TraktError'
+    this.status = status
   }
 }
 
@@ -94,12 +95,7 @@ export default class TraktAPI {
         extended: true
       })
     } catch (err) {
-      return {
-        title: undefined,
-        first_aired: undefined,
-        season: undefined,
-        number: undefined
-      }
+      throw new TraktError(err, 'getNextEpisode', { id }, err.statusCode)
     }
   }
 
