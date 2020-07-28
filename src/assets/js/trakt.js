@@ -182,10 +182,12 @@ export default class TraktAPI {
         refresh
       }
     } catch (err) {
-      return {
-        token: undefined,
-        refresh: undefined
-      }
+      throw new TraktError(
+        err,
+        'getOAuthToken',
+        { code: '[redacted]' },
+        err.statusCode
+      )
     }
   }
 
@@ -200,10 +202,12 @@ export default class TraktAPI {
         refresh: refresh_token
       }
     } catch (err) {
-      return {
-        token: undefined,
-        refresh: undefined
-      }
+      throw new TraktError(
+        err,
+        'refreshOAuthToken',
+        { refresh: '[redacted]' },
+        err.statusCode
+      )
     }
   }
 
@@ -211,9 +215,12 @@ export default class TraktAPI {
     try {
       return this.postServer('revoke', { token })
     } catch (err) {
-      return {
-        status: 'failed'
-      }
+      throw new TraktError(
+        err,
+        'revokeOAuthToken',
+        { token: '[redacted]' },
+        err.statusCode
+      )
     }
   }
 

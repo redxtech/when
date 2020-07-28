@@ -65,18 +65,22 @@
 
         // if there is a code, attempt to authenticate with it
         if (code) {
-          // attempt to exchange the code for an oauth token
-          const { token, refresh } = await this.trakt.getOAuthToken(code)
+          try {
+            // attempt to exchange the code for an oauth token
+            const { token, refresh } = await this.trakt.getOAuthToken(code)
 
-          // if it's successful, save the token to the store
-          if (token) {
-            this.setToken({ token, refresh })
+            // if it's successful, save the token to the store
+            if (token) {
+              this.setToken({ token, refresh })
 
-            // update the slugs list
-            await this.updateSlugs()
+              // update the slugs list
+              await this.updateSlugs()
 
-            // after successful authentication clear the code from the url
-            this.$router.push({ path: this.$route.path })
+              // after successful authentication clear the code from the url
+              this.$router.push({ path: this.$route.path })
+            }
+          } catch (err) {
+            console.error(err)
           }
         }
       } else {
@@ -100,12 +104,18 @@
         } else {
           // attempt to obtain a new token with the refresh token
           if (this.refresh) {
-            const { token, refresh } = await this.trakt.refreshOAuthToken(
-              this.refresh
-            )
+            try {
+              const { token, refresh } = await this.trakt.refreshOAuthToken(
+                this.refresh
+              )
 
-            // save the tokens to the store to trigger refresh
-            this.setToken({ token, refresh })
+              // save the tokens to the store to trigger refresh
+              this.setToken({ token, refresh })
+            } catch (err) {
+              console.error(err)
+
+              this.invalidateToken()
+            }
           } else {
             this.invalidateToken()
           }
@@ -140,8 +150,13 @@
         }
       },
       async logout() {
-        // revoke the token
-        await this.trakt.revokeOAuthToken(this.token)
+        try {
+          // revoke the token
+          await this.trakt.revokeOAuthToken(this.token)
+        } catch (err) {
+          console.error(err)
+        }
+
         this.invalidateToken()
 
         // reset to default when list
