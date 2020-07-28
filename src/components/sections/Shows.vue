@@ -92,5 +92,9 @@
 <style scoped>
   .shows div {
     @apply transform transition-all ease-in-out;
+
+    &.div-move {
+      @apply duration-700;
+    }
   }
 </style>
