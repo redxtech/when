@@ -1,6 +1,12 @@
 <template>
   <footer class="footer">
     <container>
+      <div class="log-in-out">
+        <p>
+          <a v-if="!loggedIn" :href="trakt.getOAuthURL()">log in.</a>
+          <a v-else @click="logout">log out.</a>
+        </p>
+      </div>
       <div class="icons">
         <footer-icon
           v-for="contact in contacts"
@@ -20,6 +26,8 @@
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
+
   import Container from '../../lib/layout/Container.vue'
   import FooterIcon from '../elements/footer-icon.vue'
 
@@ -56,7 +64,21 @@
     computed: {
       year() {
         return new Date().getFullYear()
-      }
+      },
+      ...mapGetters(['token', 'loggedIn'])
+    },
+    methods: {
+      async logout() {
+        try {
+          // revoke the token
+          await this.trakt.revokeOAuthToken(this.token)
+        } catch (err) {
+          console.error(err)
+        }
+
+        this.invalidateToken()
+      },
+      ...mapActions(['invalidateToken'])
     }
   }
 </script>
@@ -68,6 +90,22 @@
 
   .icons {
     @apply mt-8 flex justify-center;
+  }
+
+  .log-in-out {
+    @apply my-8;
+
+    p {
+      @apply text-center text-xl font-medium leading-6 text-gray-700;
+
+      a {
+        @apply cursor-pointer;
+
+        &:hover {
+          @apply underline;
+        }
+      }
+    }
   }
 
   .copy-text {

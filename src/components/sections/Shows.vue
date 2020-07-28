@@ -11,18 +11,10 @@
       @order="orders[slug] = $event"
     />
     <message
-      v-if="loggedIn"
-      key="when-logout"
-      title="log out."
-      message="click to log out."
-      clickable
-      @click="logout"
-    />
-    <message
-      v-else
+      v-if="!loggedIn"
       key="when-login"
       title="log in."
-      message="click to log in."
+      message="log in to create your own list"
       :href="loginUrl"
     />
   </transition-group>
@@ -95,6 +87,7 @@
             } else {
               try {
                 await this.trakt.createUserWhenList(this.token)
+                await this.updateSlugs()
               } catch (err) {
                 console.error(err)
               }
@@ -131,8 +124,12 @@
           // fetch the shows in the when list
           const shows = await this.trakt.getUserWhenListItems(this.token)
 
-          // map the show information to an array of slugs
-          this.setSlugs(shows.map(s => s.show.ids.slug))
+          if (shows.length > 0) {
+            // map the show information to an array of slugs
+            this.setSlugs(shows.map(s => s.show.ids.slug))
+          } else {
+            await this.useDefaultWhenList()
+          }
         } catch (err) {
           console.error(err)
 
@@ -172,6 +169,6 @@
 
 <style scoped>
   .shows div {
-    @apply transform transition-all ease-in-out duration-700;
+    @apply transform transition-all ease-in-out;
   }
 </style>
