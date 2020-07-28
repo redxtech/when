@@ -23,8 +23,6 @@
   import Container from '../../lib/layout/Container.vue'
   import FooterIcon from '../elements/footer-icon.vue'
 
-  // TODO: create new shadow class to make shadow go upwards?
-
   export default {
     name: 'Foot',
     components: { Container, FooterIcon },

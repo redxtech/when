@@ -90,8 +90,10 @@
         this.poster = poster
         this.status = status
 
-        // fetch the next episode
-        await this.getNextEpisode()
+        try {
+          // fetch the next episode
+          await this.getNextEpisode()
+        } catch {}
       } catch (err) {
         // account for the error
         this.title = 'not found.'

@@ -27,8 +27,6 @@
   import Box from '../../lib/elements/Box.vue'
   import ElementTitle from '../../lib/titles/ElementTitle.vue'
 
-  // TODO: switch trakt logo to svg
-
   export default {
     name: 'Show',
     components: { ElementTitle, Box },

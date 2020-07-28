@@ -38,7 +38,6 @@
     components: { Message, Show },
     data() {
       return {
-        slugs: [],
         orders: {}
       }
     },
@@ -53,7 +52,7 @@
       loginUrl() {
         return this.trakt.getOAuthURL()
       },
-      ...mapGetters(['token', 'refresh', 'loggedIn'])
+      ...mapGetters(['token', 'refresh', 'loggedIn', 'slugs'])
     },
     async mounted() {
       // if the token is undefined, the user is logged out
@@ -113,18 +112,14 @@
         const shows = await this.trakt.getUserWhenListItems(this.token)
 
         // map the show information to an array of slugs
-        this.slugs = shows.map(s => s.show.ids.slug)
-
-        // TODO: add functionality to gracefully diff the slugs into the store
+        this.addSlugs(shows.map(s => s.show.ids.slug))
       },
       async useDefaultWhenList() {
         // fetch the shows in the default when list
         const shows = await this.trakt.getDefaultListItems()
 
         // map the show information to an array of slugs
-        this.slugs = shows.map(s => s.show.ids.slug)
-
-        // TODO: add functionality to gracefully diff the slugs into the store
+        this.addSlugs(shows.map(s => s.show.ids.slug))
       },
       async logout() {
         // revoke the token
@@ -134,7 +129,7 @@
         // reset to default when list
         await this.useDefaultWhenList()
       },
-      ...mapActions(['setToken', 'invalidateToken'])
+      ...mapActions(['setToken', 'invalidateToken', 'addSlugs'])
     }
   }
 </script>
