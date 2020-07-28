@@ -89,7 +89,7 @@ export default class TraktAPI {
 
   async getNextEpisode(id) {
     try {
-      return await this.get({
+      return this.get({
         path: `/shows/${id}/next_episode`,
         extended: true
       })
