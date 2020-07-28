@@ -1,5 +1,5 @@
 <template>
-  <box class="show">
+  <box class="show" :data-slug="slug">
     <div class="poster">
       <!--suppress HtmlUnknownTarget -->
       <img v-if="poster" :src="poster" :alt="title" />

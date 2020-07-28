@@ -93,8 +93,11 @@
             if (this.trakt.userHasWhenList(userLists)) {
               await this.updateSlugs()
             } else {
-              // TODO: implement creation of user when list
-              console.log('user does not have when list')
+              try {
+                await this.trakt.createUserWhenList(this.token)
+              } catch (err) {
+                console.error(err)
+              }
             }
           } catch (err) {
             console.error(err)
@@ -129,7 +132,7 @@
           const shows = await this.trakt.getUserWhenListItems(this.token)
 
           // map the show information to an array of slugs
-          this.addSlugs(shows.map(s => s.show.ids.slug))
+          this.setSlugs(shows.map(s => s.show.ids.slug))
         } catch (err) {
           console.error(err)
 
@@ -142,11 +145,11 @@
           const shows = await this.trakt.getDefaultListItems()
 
           // map the show information to an array of slugs
-          this.addSlugs(shows.map(s => s.show.ids.slug))
+          this.setSlugs(shows.map(s => s.show.ids.slug))
         } catch (err) {
           console.log(err)
 
-          this.addSlugs(['mr-robot', 'dave', 'the-100', 'euphoria'])
+          this.setSlugs(['mr-robot', 'dave', 'the-100', 'euphoria-2019'])
         }
       },
       async logout() {
@@ -162,7 +165,7 @@
         // reset to default when list
         await this.useDefaultWhenList()
       },
-      ...mapActions(['setToken', 'invalidateToken', 'addSlugs'])
+      ...mapActions(['setToken', 'invalidateToken', 'setSlugs'])
     }
   }
 </script>

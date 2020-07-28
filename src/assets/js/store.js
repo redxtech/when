@@ -45,7 +45,8 @@ export default new Vuex.Store({
           state.slugs.splice(index, 1)
         }
       }
-    }
+    },
+    setSlugs: (state, slugs) => (state.slugs = slugs)
   },
   actions: {
     setToken: (ctx, { token, refresh }) => {
@@ -57,7 +58,8 @@ export default new Vuex.Store({
       ctx.commit('invalidateRefresh')
     },
     addSlugs: (ctx, slugs) => ctx.commit('addSlugs', slugs),
-    removeSlugs: (ctx, slugs) => ctx.commit('removeSlugs', slugs)
+    removeSlugs: (ctx, slugs) => ctx.commit('removeSlugs', slugs),
+    setSlugs: (ctx, slugs) => ctx.commit('setSlugs', slugs)
   },
   plugins: [vuexLocal.plugin]
 })

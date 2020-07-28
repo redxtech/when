@@ -46,23 +46,28 @@ export default class TraktAPI {
     return headers
   }
 
-  async get({ path, extended = false, token = false, status = [] }) {
+  async get({
+    path,
+    extended = false,
+    token = false,
+    status = [200, 201, 204, 401, 403, 404]
+  }) {
     return bent(
       'https://api.trakt.tv',
       'GET',
       'json',
       this.createHeaders(token),
-      ...[200, 201, 204, 401, 403, 404, ...status]
+      ...(typeof status === 'number' ? [status] : status)
     )(`${path}${extended ? '?extended=full' : ''}`)
   }
 
   // function to make a post request to the trakt api
-  async post({ path, token, body, status = [] }) {
+  async post({ path, token, body, status = [200, 201, 204, 401, 403, 404] }) {
     return bent(
       `https://api.trakt.tv`,
       'POST',
       'json',
-      ...[200, 201, 204, 401, 403, 404, ...status]
+      ...(typeof status === 'number' ? [status] : status)
     )(path, body, this.createHeaders(token))
   }
 
