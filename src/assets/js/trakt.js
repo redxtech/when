@@ -57,7 +57,7 @@ export default class TraktAPI {
       'GET',
       'json',
       this.createHeaders(token),
-      ...(typeof status === 'number' ? [status] : status)
+      status
     )(`${path}${extended ? '?extended=full' : ''}`)
   }
 
@@ -67,7 +67,7 @@ export default class TraktAPI {
       `https://api.trakt.tv`,
       'POST',
       'json',
-      ...(typeof status === 'number' ? [status] : status)
+      status
     )(path, body, this.createHeaders(token))
   }
 

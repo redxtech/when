@@ -2172,14 +2172,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bent@npm:^7.3.7":
-  version: 7.3.7
-  resolution: "bent@npm:7.3.7"
+"bent@npm:^7.3.9":
+  version: 7.3.9
+  resolution: "bent@npm:7.3.9"
   dependencies:
     bytesish: ^0.4.1
     caseless: ~0.12.0
     is-stream: ^2.0.0
-  checksum: b18ab9e3654a070dad73a702aa44199599f9284992149fcc4b58965554817fa5323d23f7c6f4e4304e16b51b2ac1023a98e45f6474e83bfdf50f87148f6715bc
+  checksum: 360d35e4b488d005865ff18245e7e0ea25a3225693d1d4e770ccc901684bbc21cf6128f7e3950383fccfd8fe4b0fd8adc271ba27ea8ea0f489b953b5b1fd20ac
   languageName: node
   linkType: hard
 
@@ -9283,7 +9283,7 @@ fsevents@~2.1.2:
     "@vue/compiler-sfc": ^3.0.0-rc.1
     autoprefixer: ^9.8.5
     babel-eslint: ^10.1.0
-    bent: ^7.3.7
+    bent: ^7.3.9
     dotenv: ^8.2.0
     eslint: ^7.5.0
     eslint-config-prettier: ^6.11.0
