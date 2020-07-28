@@ -24,6 +24,8 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+
   import Box from '../../lib/elements/Box.vue'
   import ElementTitle from '../../lib/titles/ElementTitle.vue'
   import Countdown from './countdown.vue'
@@ -37,7 +39,6 @@
         required: true
       }
     },
-    emits: ['order'],
     data() {
       return {
         title: 'loading...',
@@ -73,7 +74,7 @@
     },
     watch: {
       order(curr) {
-        this.$emit('order', curr)
+        this.setOrder({ slug: this.slug, order: curr })
       }
     },
     async mounted() {
@@ -134,7 +135,8 @@
       },
       refreshDate() {
         this.currentDate = new Date()
-      }
+      },
+      ...mapActions(['setOrder'])
     }
   }
 </script>

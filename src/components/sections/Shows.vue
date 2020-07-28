@@ -4,12 +4,7 @@
     tag="div"
     class="shows grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
   >
-    <show
-      v-for="slug in sortedSlugs"
-      :key="slug"
-      :slug="slug"
-      @order="orders[slug] = $event"
-    />
+    <show v-for="slug in sortedSlugs" :key="slug" :slug="slug" />
     <message
       v-if="!loggedIn"
       key="when-login"
@@ -28,52 +23,27 @@
   export default {
     name: 'Shows',
     components: { Message, Show },
-    data() {
-      return {
-        orders: {}
-      }
-    },
     computed: {
-      sortedSlugs() {
-        return [...this.slugs].sort((a, b) =>
-          this.orders[a] > 0 && this.orders[b] > 0
-            ? this.orders[a] - this.orders[b]
-            : this.orders[b] - this.orders[a]
-        )
-      },
       loginUrl() {
         return this.trakt.getOAuthURL()
       },
-      ...mapGetters(['token', 'refresh', 'loggedIn', 'slugs'])
+      ...mapGetters(['token', 'refresh', 'loggedIn', 'sortedSlugs'])
     },
     async mounted() {
       // if the token is undefined, the user is logged out
       if (this.token === undefined) {
         // get the default when list
-        await this.useDefaultWhenList()
+        await this.setDefaultWhenList()
 
         // check for oauth code from redirect
         const { code } = this.$route.query
 
         // if there is a code, attempt to authenticate with it
         if (code) {
-          try {
-            // attempt to exchange the code for an oauth token
-            const { token, refresh } = await this.trakt.getOAuthToken(code)
+          await this.login(code)
 
-            // if it's successful, save the token to the store
-            if (token) {
-              this.setToken({ token, refresh })
-
-              // update the slugs list
-              await this.updateSlugs()
-
-              // after successful authentication clear the code from the url
-              this.$router.push({ path: this.$route.path })
-            }
-          } catch (err) {
-            console.error(err)
-          }
+          // after successful authentication clear the code from the url
+          this.$router.push({ path: this.$route.path })
         }
       } else {
         // if there is an oauth token check to see if it's valid
@@ -95,23 +65,12 @@
           } catch (err) {
             console.error(err)
 
-            await this.useDefaultWhenList()
+            await this.setDefaultWhenList()
           }
         } else {
           // attempt to obtain a new token with the refresh token
           if (this.refresh) {
-            try {
-              const { token, refresh } = await this.trakt.refreshOAuthToken(
-                this.refresh
-              )
-
-              // save the tokens to the store to trigger refresh
-              this.setToken({ token, refresh })
-            } catch (err) {
-              console.error(err)
-
-              this.invalidateToken()
-            }
+            await this.refreshToken()
           } else {
             this.invalidateToken()
           }
@@ -119,50 +78,13 @@
       }
     },
     methods: {
-      async updateSlugs() {
-        try {
-          // fetch the shows in the when list
-          const shows = await this.trakt.getUserWhenListItems(this.token)
-
-          if (shows.length > 0) {
-            // map the show information to an array of slugs
-            this.setSlugs(shows.map(s => s.show.ids.slug))
-          } else {
-            await this.useDefaultWhenList()
-          }
-        } catch (err) {
-          console.error(err)
-
-          await this.useDefaultWhenList()
-        }
-      },
-      async useDefaultWhenList() {
-        try {
-          // fetch the shows in the default when list
-          const shows = await this.trakt.getDefaultListItems()
-
-          // map the show information to an array of slugs
-          this.setSlugs(shows.map(s => s.show.ids.slug))
-        } catch (err) {
-          console.log(err)
-
-          this.setSlugs(['mr-robot', 'dave', 'the-100', 'euphoria-2019'])
-        }
-      },
-      async logout() {
-        try {
-          // revoke the token
-          await this.trakt.revokeOAuthToken(this.token)
-        } catch (err) {
-          console.error(err)
-        }
-
-        this.invalidateToken()
-
-        // reset to default when list
-        await this.useDefaultWhenList()
-      },
-      ...mapActions(['setToken', 'invalidateToken', 'setSlugs'])
+      ...mapActions([
+        'invalidateToken',
+        'login',
+        'refreshToken',
+        'updateSlugs',
+        'setDefaultWhenList'
+      ])
     }
   }
 </script>

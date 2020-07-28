@@ -65,20 +65,10 @@
       year() {
         return new Date().getFullYear()
       },
-      ...mapGetters(['token', 'loggedIn'])
+      ...mapGetters(['loggedIn'])
     },
     methods: {
-      async logout() {
-        try {
-          // revoke the token
-          await this.trakt.revokeOAuthToken(this.token)
-        } catch (err) {
-          console.error(err)
-        }
-
-        this.invalidateToken()
-      },
-      ...mapActions(['invalidateToken'])
+      ...mapActions(['logout'])
     }
   }
 </script>
