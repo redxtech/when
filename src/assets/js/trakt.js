@@ -2,8 +2,23 @@ import bent from 'bent'
 
 // TODO: wrap most functions with error handlers
 
+class TraktError extends Error {
+  constructor(err, resource, params = {}, status) {
+    super(
+      `${resource}(${Object.keys(params)
+        .map(key => `${key}: ${params[key]}`)
+        .join(', ')})${status ? ` [${status}]` : ''} failed: ${err}`
+    )
+
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, TraktError)
+    }
+
+    this.name = 'TraktError'
+  }
+}
+
 export default class TraktAPI {
-  // private fields
   api_key
   origin
   server
@@ -30,26 +45,28 @@ export default class TraktAPI {
     return headers
   }
 
-  get({ path, extended = false, token = false, status = 200 }) {
+  async get({ path, extended = false, token = false, status = [] }) {
     return bent(
       'https://api.trakt.tv',
       'GET',
       'json',
       this.createHeaders(token),
-      status
+      ...[200, 201, 204, 401, 403, 404, ...status]
     )(`${path}${extended ? '?extended=full' : ''}`)
   }
 
-  post({ path, token, body, status = 200 }) {
+  // function to make a post request to the trakt api
+  async post({ path, token, body, status = [] }) {
     return bent(
       `https://api.trakt.tv`,
       'POST',
       'json',
-      status
+      ...[200, 201, 204, 401, 403, 404, ...status]
     )(path, body, this.createHeaders(token))
   }
 
-  postServer(path, body) {
+  // function to make a post request to the oauth endpoints
+  async postServer(path, body) {
     return bent(
       `${this.server}/.netlify/functions/`,
       'POST',
@@ -131,12 +148,12 @@ export default class TraktAPI {
   async getOAuthToken(code) {
     try {
       const {
-        auth: { access_token, refresh_token }
+        auth: { access_token: token, refresh_token: refresh }
       } = await this.postServer('exchange', { code })
 
       return {
-        token: access_token,
-        refresh: refresh_token
+        token,
+        refresh
       }
     } catch (err) {
       return {
@@ -149,11 +166,11 @@ export default class TraktAPI {
   async refreshOAuthToken(refresh) {
     try {
       const {
-        auth: { access_token, refresh_token }
+        auth: { access_token: token, refresh_token }
       } = await this.postServer('refresh', { refresh_token: refresh })
 
       return {
-        token: access_token,
+        token,
         refresh: refresh_token
       }
     } catch (err) {
@@ -184,7 +201,6 @@ export default class TraktAPI {
   }
 
   userHasWhenList(lists) {
-    // noinspection JSUnresolvedVariable
     return lists.some(list => list.ids.slug === 'when' && list.name === 'when.')
   }
 }
