@@ -66,7 +66,7 @@
               'not found': -4,
               canceled: -5,
               ended: -6
-            }?.[this.status] || -2
+            }[this.status] || -2
           )
         }
       }
