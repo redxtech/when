@@ -112,11 +112,20 @@ export default class TraktAPI {
     }
   }
 
-  getUserWhenListItems(token) {
-    return this.get({
-      path: '/users/me/lists/when/items/shows',
-      token
-    })
+  async getUserWhenListItems(token) {
+    try {
+      return this.get({
+        path: '/users/me/lists/when/items/shows',
+        token
+      })
+    } catch (err) {
+      throw new TraktError(
+        err,
+        'getUserWhenListItems',
+        { token: '[redacted]' },
+        err.statusCode
+      )
+    }
   }
 
   createUserWhenList(token) {

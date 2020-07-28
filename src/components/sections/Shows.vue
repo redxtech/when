@@ -94,6 +94,8 @@
             }
           } catch (err) {
             console.error(err)
+
+            await this.useDefaultWhenList()
           }
         } else {
           // attempt to obtain a new token with the refresh token
@@ -112,11 +114,17 @@
     },
     methods: {
       async updateSlugs() {
-        // fetch the shows in the when list
-        const shows = await this.trakt.getUserWhenListItems(this.token)
+        try {
+          // fetch the shows in the when list
+          const shows = await this.trakt.getUserWhenListItems(this.token)
 
-        // map the show information to an array of slugs
-        this.addSlugs(shows.map(s => s.show.ids.slug))
+          // map the show information to an array of slugs
+          this.addSlugs(shows.map(s => s.show.ids.slug))
+        } catch (err) {
+          console.error(err)
+
+          await this.useDefaultWhenList()
+        }
       },
       async useDefaultWhenList() {
         // fetch the shows in the default when list

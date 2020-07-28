@@ -95,6 +95,8 @@
           await this.getNextEpisode()
         } catch {}
       } catch (err) {
+        console.error(err)
+
         // account for the error
         this.title = 'not found.'
         this.status = 'not found'
@@ -132,9 +134,6 @@
       },
       refreshDate() {
         this.currentDate = new Date()
-      },
-      pad(number) {
-        return number.toString().padStart(2, '0')
       }
     }
   }
