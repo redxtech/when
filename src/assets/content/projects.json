@@ -56,6 +56,89 @@
           "skill": "serverless"
         }
       ]
+    },
+    {
+      "name": "canmore-brewing",
+      "description": "A landing page and informative website for a local brewery.",
+      "url": "https://canmorebrewing.com",
+      "image": "https://res.cloudinary.com/gabe-dunn-dev/image/upload/v1596054969/gabedunn.dev/projects/canmorebrewing.com.png",
+      "skills": [
+        {
+          "skill": "vue"
+        },
+        {
+          "skill": "google maps"
+        },
+        {
+          "skill": "apis"
+        }
+      ]
+    },
+    {
+      "name": "devmod",
+      "description": "A moderation bot for a discord server.",
+      "url": "https://devcord.com",
+      "github": "redxtech/devmod",
+      "image": "https://res.cloudinary.com/gabe-dunn-dev/image/upload/v1596055092/gabedunn.dev/projects/devmod.png",
+      "skills": [
+        {
+          "skill": "node"
+        },
+        {
+          "skill": "typescript"
+        },
+        {
+          "skill": "async"
+        },
+        {
+          "skill": "moderation"
+        },
+        {
+          "skill": "modular"
+        }
+      ]
+    },
+    {
+      "name": "devcord",
+      "description": "A discord community that brings together web developers of all experience levels.",
+      "url": "https://devcord.com",
+      "github": "devcord",
+      "image": "https://res.cloudinary.com/gabe-dunn-dev/image/upload/v1596055256/gabedunn.dev/projects/2020-07-29_14.40.45_devcord_devcord.com_1c41855ff9a4_ortexs.png",
+      "skills": [
+        {
+          "skill": "discord"
+        },
+        {
+          "skill": "community"
+        },
+        {
+          "skill": "developers"
+        },
+        {
+          "skill": "web dev"
+        }
+      ]
+    },
+    {
+      "name": "vue-plyr",
+      "description": "A vue component for the plyr video & audio player.",
+      "url": "https://github.com/D",
+      "github": "redxtech/vue-plyr",
+      "image": "https://res.cloudinary.com/gabe-dunn-dev/image/upload/v1596055342/gabedunn.dev/projects/vue-plyr.png",
+      "skills": [
+        {
+          "skill": "vue"
+        },
+        {
+          "skill": "js"
+        },
+        {
+          "skill": "npm"
+        },
+        {
+          "skill": "component"
+        }
+      ]
     }
   ]
 }
