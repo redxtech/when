@@ -1,0 +1,61 @@
+{
+  "projects": [
+    {
+      "name": "gabedunn.dev",
+      "description": "This website. My personal website and portfolio.",
+      "url": "https://gabedunn.dev",
+      "github": "gabedunn/gabedunn.dev",
+      "image": "https://res.cloudinary.com/gabe-dunn-dev/image/upload/v1596054460/gabedunn.dev/projects/gabedunn.dev.png",
+      "skills": [
+        {
+          "skill": "vue"
+        },
+        {
+          "skill": "vite"
+        },
+        {
+          "skill": "tailwind"
+        },
+        {
+          "skill": "vue3"
+        },
+        {
+          "skill": "cms"
+        }
+      ]
+    },
+    {
+      "name": "when.",
+      "description": "when. is a website that tells you when tv shows & movies are coming out - to the second.",
+      "url": "https://when.sh",
+      "github": "redxtech/when-next",
+      "image": "https://res.cloudinary.com/gabe-dunn-dev/image/upload/v1596054640/gabedunn.dev/projects/when.sh.png",
+      "skills": [
+        {
+          "skill": "vue"
+        },
+        {
+          "skill": "vite"
+        },
+        {
+          "skill": "vue3"
+        },
+        {
+          "skill": "vuex"
+        },
+        {
+          "skill": "oauth2"
+        },
+        {
+          "skill": "trakt.tv"
+        },
+        {
+          "skill": "tailwind"
+        },
+        {
+          "skill": "serverless"
+        }
+      ]
+    }
+  ]
+}
