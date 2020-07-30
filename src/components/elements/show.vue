@@ -129,8 +129,10 @@
           this.season = season
           this.number = number
 
-          // refresh the date to update order
-          this.refreshDate()
+          if (!this.aired) {
+            // refresh the date to update order
+            this.refreshDate()
+          }
         } catch {}
       },
       refreshDate() {
