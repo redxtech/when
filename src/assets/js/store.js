@@ -147,6 +147,24 @@ export default new Vuex.Store({
         return ctx.dispatch('setDefaultWhenList')
       }
     },
+    addShow: async (ctx, slug) => {
+      try {
+        const { added } = await trakt.addShowToUserWhenList(
+          ctx.getters.token,
+          slug
+        )
+
+        if (added.shows === 1) {
+          await ctx.dispatch('addSlugs', slug)
+        }
+
+        return added
+      } catch (err) {
+        console.error(err)
+
+        throw err
+      }
+    },
     removeShow: async (ctx, slug) => {
       try {
         const { deleted } = await trakt.removeShowFromUserWhenList(
