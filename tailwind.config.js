@@ -14,7 +14,19 @@ module.exports = {
     extend: {
       colors: {
         primary: '#004250',
-        secondary: '#3094B4'
+        secondary: '#3094B4',
+        white: {
+          default: '#FFF',
+          100: '#FFF',
+          200: '#FFF',
+          300: '#FFF',
+          400: '#FFF',
+          500: '#FFF',
+          600: '#FFF',
+          700: '#FFF',
+          800: '#FFF',
+          900: '#FFF'
+        }
       },
       boxShadow: {
         box:
