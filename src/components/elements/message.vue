@@ -1,10 +1,12 @@
 <template>
   <box class="message">
     <div class="poster">
-      <a v-if="href" :href="href">
-        <img src="../../assets/img/trakt.png" alt="trakt icon" />
-      </a>
-      <img v-else src="../../assets/img/trakt.png" alt="trakt icon" />
+      <slot name="poster">
+        <a v-if="href" :href="href">
+          <img src="../../assets/img/trakt.png" alt="trakt icon" />
+        </a>
+        <img v-else src="../../assets/img/trakt.png" alt="trakt icon" />
+      </slot>
     </div>
     <div class="details" :class="clickableStyle">
       <template v-if="href">
