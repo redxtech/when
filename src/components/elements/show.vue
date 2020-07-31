@@ -43,7 +43,7 @@
       return {
         title: 'loading...',
         poster: undefined,
-        status: undefined,
+        status: 'loading..',
         episodeTitle: 'tba',
         airing: undefined,
         season: undefined,
