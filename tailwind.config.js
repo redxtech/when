@@ -8,7 +8,10 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   purge: {
-    content: ['./src/**/*.vue']
+    content: ['./src/**/*.vue'],
+    options: {
+      whitelistPatterns: [/[pm][xy]?-\d{1,3}/]
+    }
   },
   theme: {
     extend: {
