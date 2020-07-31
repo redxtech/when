@@ -7,6 +7,7 @@
       <div class="input">
         <input
           id="search"
+          ref="search"
           v-model="search"
           class="form-input"
           :placeholder="trending"
@@ -24,11 +25,26 @@
   export default {
     name: 'ShowModal',
     components: { SearchResults, VModal },
+    props: {
+      show: {
+        type: Boolean,
+        required: true
+      }
+    },
     emits: ['close'],
     data() {
       return {
         search: '',
         trending: ''
+      }
+    },
+    watch: {
+      show(curr) {
+        if (curr) {
+          this.$nextTick(() => {
+            this.$refs.search.focus()
+          })
+        }
       }
     },
     async mounted() {

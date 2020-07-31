@@ -39,7 +39,11 @@
     </message>
   </transition-group>
   <show-modal v-show="isModalVisible" v-bind="modalState" @close="closeModal" />
-  <add-modal v-show="isAddModalVisible" @close="isAddModalVisible = false" />
+  <add-modal
+    v-show="isAddModalVisible"
+    :show="isAddModalVisible"
+    @close="isAddModalVisible = false"
+  />
 </template>
 <script>
   import { mapGetters, mapActions } from 'vuex'
