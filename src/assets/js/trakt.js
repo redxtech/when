@@ -131,6 +131,15 @@ export default class TraktAPI {
     }
   }
 
+  async searchShows(query) {
+    try {
+      const q = encodeURIComponent(query)
+      return this.get({ path: `/search/show?query=${q}` })
+    } catch (err) {
+      throw new TraktError(err, 'searchShows', { query }, err.statusCode)
+    }
+  }
+
   async getUserLists(token) {
     try {
       return this.get({ path: '/users/me/lists', token })
