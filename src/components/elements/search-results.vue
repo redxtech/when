@@ -81,10 +81,6 @@
             8
           )
 
-          this.results = results
-
-          console.log(results)
-
           for (const show of results) {
             const {
               show: {
@@ -93,15 +89,21 @@
             } = show
 
             if (tmdb) {
-              const poster = await this.tmdb.getPoster(tmdb)
+              try {
+                const poster = await this.tmdb.getPoster(tmdb)
 
-              if (poster) {
-                this.posters[slug] = `https://image.tmdb.org/t/p/w500/${poster}`
-              }
+                if (poster) {
+                  this.posters[
+                    slug
+                  ] = `https://image.tmdb.org/t/p/w500/${poster}`
+                }
+              } catch {}
             } else {
               this.posters[slug] = undefined
             }
           }
+
+          this.results = results
         } catch {}
       }
     },
