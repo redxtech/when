@@ -111,6 +111,16 @@ export default class TraktAPI {
     }
   }
 
+  async getTrendingShows() {
+    try {
+      return this.get({
+        path: '/shows/trending'
+      })
+    } catch (err) {
+      throw new TraktError(err, 'getTrendingShows', {}, err.statusCode)
+    }
+  }
+
   async getUserLists(token) {
     try {
       return this.get({ path: '/users/me/lists', token })
