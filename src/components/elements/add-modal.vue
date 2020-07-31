@@ -1,45 +1,34 @@
 <template>
   <v-modal @close="$emit('close')">
     <template #header>add a show</template>
-    <label for="slug" class="sr-only">show</label>
+    <label for="search" class="sr-only">show</label>
     <div class="add-show">
-      <label for="slug">add a show</label>
+      <label for="search">search for a show:</label>
       <div class="input">
-        <div>
-          <input
-            id="slug"
-            v-model="slug"
-            class="form-input"
-            :placeholder="trendingSlug"
-          />
-        </div>
-        <button class="add-button">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-            <path
-              fill="currentColor"
-              d="M368 224H224V80c0-8.84-7.16-16-16-16h-32c-8.84 0-16 7.16-16 16v144H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h144v144c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16V288h144c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z"
-            ></path>
-          </svg>
-          <span @click="add">add</span>
-        </button>
+        <input
+          id="search"
+          v-model="search"
+          class="form-input"
+          :placeholder="trending"
+        />
       </div>
+      <search-results :search="search" />
     </div>
   </v-modal>
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
-
   import VModal from './v-modal.vue'
+  import SearchResults from './search-results.vue'
 
   export default {
     name: 'ShowModal',
-    components: { VModal },
+    components: { SearchResults, VModal },
     emits: ['close'],
     data() {
       return {
-        slug: '',
-        trendingSlug: ''
+        search: '',
+        trending: ''
       }
     },
     async mounted() {
@@ -47,23 +36,7 @@
 
       const { show } = trending[0]
 
-      this.trendingSlug = show.ids.slug
-    },
-    methods: {
-      async add() {
-        try {
-          await this.trakt.getShow(this.slug)
-
-          this.slug = ''
-
-          return this.addShow(this.slug)
-        } catch (err) {
-          console.error(err)
-
-          console.log('show not found')
-        }
-      },
-      ...mapActions(['addShow'])
+      this.trending = show.title
     }
   }
 </script>
@@ -86,34 +59,10 @@
       }
 
       .form-input {
-        @apply block w-full rounded-none rounded-l-md transition ease-in-out duration-150;
+        @apply block w-full;
 
         @media (min-width: 640px) {
           @apply text-sm leading-5;
-        }
-      }
-
-      .add-button {
-        @apply -ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-r-md text-gray-700 bg-gray-50 transition ease-in-out duration-150;
-
-        &:hover {
-          @apply text-gray-500 bg-white;
-        }
-
-        &:focus {
-          @apply outline-none shadow-outline-blue border-blue-300;
-        }
-
-        &:active {
-          @apply bg-gray-100 text-gray-700;
-        }
-
-        svg {
-          @apply h-5 w-5 text-gray-400;
-        }
-
-        span {
-          @apply ml-2;
         }
       }
     }
