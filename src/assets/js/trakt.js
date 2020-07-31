@@ -121,6 +121,16 @@ export default class TraktAPI {
     }
   }
 
+  async getPopularShows() {
+    try {
+      return this.get({
+        path: '/shows/popular'
+      })
+    } catch (err) {
+      throw new TraktError(err, 'getPopularShows', {}, err.statusCode)
+    }
+  }
+
   async getUserLists(token) {
     try {
       return this.get({ path: '/users/me/lists', token })
