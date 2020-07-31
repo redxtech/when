@@ -1,5 +1,5 @@
 <template>
-  <box class="show" :data-slug="slug">
+  <box class="show" :data-slug="slug" @click="openModal">
     <div class="poster">
       <!--suppress HtmlUnknownTarget -->
       <img v-if="poster" :src="poster" :alt="title" />
@@ -39,15 +39,19 @@
         required: true
       }
     },
+    emits: ['open-modal'],
     data() {
       return {
         title: 'loading...',
-        poster: undefined,
+        poster: '',
         status: 'loading..',
         episodeTitle: 'tba',
-        airing: undefined,
-        season: undefined,
-        episode: undefined,
+        overview: '',
+        ids: {},
+        airing: '',
+        season: 0,
+        episode: 0,
+        episodeOverview: '',
         aired: false,
         currentDate: new Date()
       }
@@ -82,14 +86,19 @@
         const {
           title,
           status,
-          ids: { tmdb }
+          overview,
+          ids,
+          homepage
         } = await this.trakt.getShow(this.slug, true)
-        const poster = await this.tmdb.getPosterPath(tmdb)
+        const poster = await this.tmdb.getPosterPath(ids.tmdb)
 
         // assign the show information to the state
         this.title = title
         this.poster = poster
         this.status = status
+        this.overview = overview
+        this.ids = ids
+        this.homepage = homepage
 
         try {
           // fetch the next episode
@@ -115,7 +124,8 @@
             title: episodeTitle,
             first_aired,
             season,
-            number
+            number,
+            overview
           } = await this.trakt.getNextEpisode(this.slug)
 
           // if a new episode has aired switch the aired property
@@ -125,9 +135,10 @@
 
           // assign the show information to the state after checking if it's valid
           if (episodeTitle) this.episodeTitle = episodeTitle
+          if (overview) this.episodeOverview = overview
           this.airing = first_aired
           this.season = season
-          this.number = number
+          this.episode = number
 
           if (!this.aired) {
             // refresh the date to update order
@@ -137,6 +148,23 @@
       },
       refreshDate() {
         this.currentDate = new Date()
+      },
+      openModal() {
+        this.$emit('open-modal', {
+          slug: this.slug,
+          title: this.title,
+          poster: this.poster,
+          status: this.status,
+          episodeTitle: this.episodeTitle,
+          overview: this.overview,
+          ids: this.ids,
+          homepage: this.homepage,
+          airing: this.airing,
+          season: this.season,
+          episode: this.episode,
+          episodeOverview: this.episodeOverview,
+          aired: this.aired
+        })
       },
       ...mapActions(['setOrder'])
     }

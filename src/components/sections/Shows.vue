@@ -4,7 +4,12 @@
     tag="div"
     class="shows grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
   >
-    <show v-for="slug in sortedSlugs" :key="slug" :slug="slug" />
+    <show
+      v-for="slug in sortedSlugs"
+      :key="slug"
+      :slug="slug"
+      @open-modal="openModal"
+    />
     <message
       v-if="!loggedIn"
       key="when-login"
@@ -13,16 +18,38 @@
       :href="loginUrl"
     />
   </transition-group>
+  <show-modal v-show="isModalVisible" v-bind="modalState" @close="closeModal" />
 </template>
 <script>
   import { mapGetters, mapActions } from 'vuex'
 
   import Message from '../elements/message.vue'
   import Show from '../elements/show.vue'
+  import ShowModal from '../elements/show-modal.vue'
 
   export default {
     name: 'Shows',
-    components: { Message, Show },
+    components: { Message, Show, ShowModal },
+    data() {
+      return {
+        isModalVisible: false,
+        modalState: {
+          slug: '',
+          title: 'loading...',
+          poster: '',
+          status: '',
+          episodeTitle: 'tba',
+          overview: '',
+          ids: {},
+          homepage: '',
+          airing: '',
+          season: 0,
+          episode: 0,
+          episodeOverview: '',
+          aired: false
+        }
+      }
+    },
     computed: {
       loginUrl() {
         return this.trakt.getOAuthURL()
@@ -78,6 +105,13 @@
       }
     },
     methods: {
+      openModal(modalState) {
+        this.modalState = modalState
+        this.isModalVisible = true
+      },
+      closeModal() {
+        this.isModalVisible = false
+      },
       ...mapActions([
         'invalidateToken',
         'login',

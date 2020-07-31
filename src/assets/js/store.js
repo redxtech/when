@@ -147,6 +147,22 @@ export default new Vuex.Store({
         return ctx.dispatch('setDefaultWhenList')
       }
     },
+    removeShow: async (ctx, slug) => {
+      try {
+        const { deleted } = await trakt.removeShowFromUserWhenList(
+          ctx.getters.token,
+          slug
+        )
+
+        if (deleted.shows === 1) {
+          await ctx.dispatch('removeSlugs', slug)
+        }
+
+        return deleted
+      } catch (err) {
+        console.error(err)
+      }
+    },
     setDefaultWhenList: async ctx => {
       try {
         // fetch the shows in the default when list
@@ -158,7 +174,7 @@ export default new Vuex.Store({
           shows.map(s => s.show.ids.slug)
         )
       } catch (err) {
-        console.log(err)
+        console.error(err)
 
         return ctx.dispatch('setSlugs', [
           'mr-robot',
