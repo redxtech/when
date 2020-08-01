@@ -1,10 +1,11 @@
 <template>
   <div v-if="shows.length" class="results">
     <div v-for="show in shows" :key="show.slug" class="show">
-      <div @click="add(show.slug)">
+      <div class="poster" @click="add(show.slug)">
         <!--suppress HtmlUnknownTarget -->
         <img
           v-if="show.poster"
+          :ref="`img-${show.slug}`"
           :src="show.poster"
           :alt="show.title"
           :title="show.title"
@@ -12,11 +13,27 @@
         />
         <img
           v-else
+          :ref="`img-${show.slug}`"
           src="../../assets/img/trakt.png"
           :alt="show.title"
           :title="show.title"
           class="poster"
         />
+
+        <div class="overlay">
+          <svg
+            :ref="`svg-${show.slug}`"
+            class="w-full text-gray-900"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 384 512"
+          >
+            <path
+              :ref="`path-${show.slug}`"
+              fill="currentColor"
+              d="M368 224H224V80c0-8.84-7.16-16-16-16h-32c-8.84 0-16 7.16-16 16v144H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h144v144c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16V288h144c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z"
+            ></path>
+          </svg>
+        </div>
       </div>
       <element-title size="sm" class="truncate w-full" :title="show.title">{{
         show.title
@@ -57,7 +74,8 @@
     data() {
       return {
         results: [],
-        posters: {}
+        posters: {},
+        icon: ''
       }
     },
     computed: {
@@ -109,15 +127,62 @@
     },
     methods: {
       async add(slug) {
+        const check =
+          'M435.848 83.466L172.804 346.51l-96.652-96.652c-4.686-4.686-12.284-4.686-16.971 0l-28.284 28.284c-4.686 4.686-4.686 12.284 0 16.971l133.421 133.421c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-28.284-28.284c-4.686-4.686-12.284-4.686-16.97 0z'
+        const x =
+          'M207.6 256l107.72-107.72c6.23-6.23 6.23-16.34 0-22.58l-25.03-25.03c-6.23-6.23-16.34-6.23-22.58 0L160 208.4 52.28 100.68c-6.23-6.23-16.34-6.23-22.58 0L4.68 125.7c-6.23 6.23-6.23 16.34 0 22.58L112.4 256 4.68 363.72c-6.23 6.23-6.23 16.34 0 22.58l25.03 25.03c6.23 6.23 16.34 6.23 22.58 0L160 303.6l107.72 107.72c6.23 6.23 16.34 6.23 22.58 0l25.03-25.03c6.23-6.23 6.23-16.34 0-22.58L207.6 256z'
+        const add =
+          'M368 224H224V80c0-8.84-7.16-16-16-16h-32c-8.84 0-16 7.16-16 16v144H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h144v144c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16V288h144c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z'
+
+        const img = this.$refs[`img-${slug}`]
+        const svg = this.$refs[`svg-${slug}`]
+        const path = this.$refs[`path-${slug}`]
+
+        const transitionClasses = [
+          'transition-opacity',
+          'duration-300',
+          'ease-in-out'
+        ]
+
         try {
           await this.trakt.getShow(slug)
 
           // TODO: show check mark on success or error on fail
-          return this.addShow(slug)
+          await this.addShow(slug)
+
+          svg.classList.add('text-green-400')
+
+          path.setAttribute('d', check)
+
+          setTimeout(() => {
+            img.classList.add('opacity-100', ...transitionClasses)
+            path.classList.add('opacity-0', ...transitionClasses)
+
+            setTimeout(() => {
+              img.classList.remove('opacity-100', ...transitionClasses)
+              path.classList.remove('opacity-0', ...transitionClasses)
+              svg.classList.remove('text-green-400')
+              path.setAttribute('d', add)
+            }, 2000)
+          }, 2000)
         } catch (err) {
           console.error(err)
 
-          console.log('show not found')
+          svg.classList.add('text-red-400')
+
+          path.setAttribute('d', x)
+
+          setTimeout(() => {
+            img.classList.add('opacity-100', ...transitionClasses)
+            path.classList.add('opacity-0', ...transitionClasses)
+
+            setTimeout(() => {
+              img.classList.remove('opacity-100', ...transitionClasses)
+              path.classList.remove('opacity-0', ...transitionClasses)
+              svg.classList.remove('text-red-400')
+              path.setAttribute('d', add)
+            }, 2000)
+          }, 2000)
         }
       },
       ...mapActions(['addShow'])
@@ -127,13 +192,39 @@
 
 <style scoped>
   .results {
-    @apply grid grid-cols-4 gap-4 mt-4;
+    @apply grid grid-cols-4 gap-6 mt-4;
 
     .show {
       @apply flex flex-col items-center content-center justify-between text-center;
 
       .poster {
-        @apply w-20 rounded cursor-pointer;
+        @apply relative;
+
+        img {
+          @apply w-full h-auto block rounded cursor-pointer opacity-100 transition-opacity duration-300 ease-in-out;
+
+          &.opacity-100 {
+            opacity: 1 !important;
+          }
+        }
+
+        .overlay {
+          @apply absolute top-0 left-0 opacity-0 text-center transition-opacity duration-300 ease-in-out;
+
+          svg {
+            @apply p-6 pt-12;
+          }
+        }
+
+        &:hover {
+          img {
+            @apply opacity-50;
+          }
+
+          .overlay {
+            @apply opacity-100;
+          }
+        }
       }
 
       .open {
