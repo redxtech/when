@@ -1,6 +1,6 @@
 <template>
   <transition name="modal-fade">
-    <div class="modal-backdrop">
+    <div ref="backdrop" class="modal-backdrop" @click="closeBackdrop">
       <div class="modal">
         <header class="modal-header">
           <element-title size="xl">
@@ -41,6 +41,12 @@
     methods: {
       close() {
         this.$emit('close')
+      },
+      closeBackdrop(event) {
+        // noinspection JSUnresolvedVariable
+        if (event.target === this.$refs.backdrop) {
+          this.$emit('close')
+        }
       }
     }
   }
