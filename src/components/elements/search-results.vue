@@ -5,7 +5,6 @@
         <!--suppress HtmlUnknownTarget -->
         <img
           v-if="show.poster"
-          :ref="`img-${show.slug}`"
           :src="show.poster"
           :alt="show.title"
           :title="show.title"
@@ -13,7 +12,6 @@
         />
         <img
           v-else
-          :ref="`img-${show.slug}`"
           src="../../assets/img/trakt.png"
           :alt="show.title"
           :title="show.title"
@@ -134,15 +132,8 @@
         const add =
           'M368 224H224V80c0-8.84-7.16-16-16-16h-32c-8.84 0-16 7.16-16 16v144H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h144v144c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16V288h144c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z'
 
-        const img = this.$refs[`img-${slug}`]
         const svg = this.$refs[`svg-${slug}`]
         const path = this.$refs[`path-${slug}`]
-
-        const transitionClasses = [
-          'transition-opacity',
-          'duration-300',
-          'ease-in-out'
-        ]
 
         try {
           await this.trakt.getShow(slug)
@@ -155,15 +146,8 @@
           path.setAttribute('d', check)
 
           setTimeout(() => {
-            img.classList.add('opacity-100', ...transitionClasses)
-            path.classList.add('opacity-0', ...transitionClasses)
-
-            setTimeout(() => {
-              img.classList.remove('opacity-100', ...transitionClasses)
-              path.classList.remove('opacity-0', ...transitionClasses)
-              svg.classList.remove('text-green-400')
-              path.setAttribute('d', add)
-            }, 2000)
+            svg.classList.remove('text-green-400')
+            path.setAttribute('d', add)
           }, 2000)
         } catch (err) {
           console.error(err)
@@ -173,15 +157,8 @@
           path.setAttribute('d', x)
 
           setTimeout(() => {
-            img.classList.add('opacity-100', ...transitionClasses)
-            path.classList.add('opacity-0', ...transitionClasses)
-
-            setTimeout(() => {
-              img.classList.remove('opacity-100', ...transitionClasses)
-              path.classList.remove('opacity-0', ...transitionClasses)
-              svg.classList.remove('text-red-400')
-              path.setAttribute('d', add)
-            }, 2000)
+            svg.classList.remove('text-red-400')
+            path.setAttribute('d', add)
           }, 2000)
         }
       },

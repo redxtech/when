@@ -10,7 +10,7 @@
           ref="search"
           v-model="search"
           class="form-input"
-          :placeholder="trending"
+          :placeholder="`ex: ${trending.toLowerCase()}`"
         />
       </div>
       <search-results :search="search" />
