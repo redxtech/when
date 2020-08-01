@@ -53,7 +53,7 @@
   }
 
   .modal {
-    @apply w-144 bg-white p-4 flex flex-col;
+    @apply w-144 bg-white m-4 p-4 rounded flex flex-col;
 
     .modal-header {
       @apply flex items-center content-center justify-between;
