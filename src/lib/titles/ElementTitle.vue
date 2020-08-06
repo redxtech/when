@@ -13,9 +13,18 @@
         required: false,
         default: 'base',
         validator: val =>
-          ['xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl'].some(
-            s => s === val
-          )
+          [
+            'xs',
+            'sm',
+            'base',
+            'lg',
+            'xl',
+            '2xl',
+            '3xl',
+            '4xl',
+            '5xl',
+            '6xl'
+          ].some(s => s === val)
       },
       bold: {
         type: Boolean,
@@ -39,11 +48,7 @@
         ]
         const index = sizes.indexOf(this.size)
 
-        return [
-          `text-${sizes[index]}`,
-          `sm:text-${sizes[index + 1]}`,
-          this.bold ? 'font-bold' : 'font-medium'
-        ]
+        return [`text-${sizes[index]}`, this.bold ? 'font-bold' : 'font-medium']
       }
     }
   }
