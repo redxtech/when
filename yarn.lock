@@ -8562,9 +8562,9 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^1.5.2":
-  version: 1.5.2
-  resolution: "tailwindcss@npm:1.5.2"
+"tailwindcss@npm:^1.6.2":
+  version: 1.6.2
+  resolution: "tailwindcss@npm:1.6.2"
   dependencies:
     "@fullhuman/postcss-purgecss": ^2.1.2
     autoprefixer: ^9.4.5
@@ -8588,7 +8588,7 @@ fsevents@~2.1.2:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: cf78ef01119e5394dfc6590c50a1cf5c1fa866c9b61b86b2a07c98944cb765e72737e8e00166fdd3afca4504fe48b80b482ffa000dda163a32b26642f5b82482
+  checksum: 7acb04bb42313eec44c4534a83724a15982ea51e5d9d43de2781a72627099f6802ceba3d4996613374eb4674fededff64c437dc2de1c26ee74f489f67f36c835
   languageName: node
   linkType: hard
 
@@ -9296,7 +9296,7 @@ fsevents@~2.1.2:
     postcss-nested: ^4.2.3
     postcss-preset-env: ^6.7.0
     prettier: ^2.0.5
-    tailwindcss: ^1.5.2
+    tailwindcss: ^1.6.2
     vite: ^1.0.0-rc.1
     vue: ^3.0.0-rc.1
     vue-router: next

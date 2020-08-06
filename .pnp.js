@@ -103,7 +103,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "tailwindcss",
-        "npm:1.5.2"
+        "npm:1.6.2"
       ],
       [
         "vite",
@@ -151,7 +151,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-nested", "npm:4.2.3"],
             ["postcss-preset-env", "npm:6.7.0"],
             ["prettier", "npm:2.0.5"],
-            ["tailwindcss", "npm:1.5.2"],
+            ["tailwindcss", "npm:1.6.2"],
             ["vite", "npm:1.0.0-rc.3"],
             ["vue", "npm:3.0.0-rc.4"],
             ["vue-router", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.3"],
@@ -1601,7 +1601,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tailwindcss/custom-forms", "virtual:d1dbc08692d551df405c1b8d656fba60ea5a8c45149b9dcae6e7d172d2f52b29e9fa380561aa6d058edd90018040e6843c85685f6488c9beaad6362b30a1eb18#npm:0.2.1"],
             ["lodash", "npm:4.17.19"],
             ["mini-svg-data-uri", "npm:1.2.3"],
-            ["tailwindcss", "npm:1.5.2"],
+            ["tailwindcss", "npm:1.6.2"],
             ["traverse", "npm:0.6.6"]
           ],
           "packagePeers": [
@@ -1615,7 +1615,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/@tailwindcss-typography-virtual-c9a14002d6/0/cache/@tailwindcss-typography-npm-0.2.0-a2f9b30b81-07b1231917.zip/node_modules/@tailwindcss/typography/",
           "packageDependencies": [
             ["@tailwindcss/typography", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:0.2.0"],
-            ["tailwindcss", "npm:1.5.2"]
+            ["tailwindcss", "npm:1.6.2"]
           ],
           "packagePeers": [
             "tailwindcss"
@@ -1632,7 +1632,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tailwindcss/typography", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:0.2.0"],
             ["hex-rgb", "npm:4.1.0"],
             ["postcss-selector-parser", "npm:6.0.2"],
-            ["tailwindcss", "npm:1.5.2"]
+            ["tailwindcss", "npm:1.6.2"]
           ],
           "packagePeers": [
             "tailwindcss"
@@ -9782,10 +9782,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["tailwindcss", [
-        ["npm:1.5.2", {
-          "packageLocation": "./.yarn/cache/tailwindcss-npm-1.5.2-7bc97ca9bc-cf78ef0111.zip/node_modules/tailwindcss/",
+        ["npm:1.6.2", {
+          "packageLocation": "./.yarn/cache/tailwindcss-npm-1.6.2-82dcdd707a-7acb04bb42.zip/node_modules/tailwindcss/",
           "packageDependencies": [
-            ["tailwindcss", "npm:1.5.2"],
+            ["tailwindcss", "npm:1.6.2"],
             ["@fullhuman/postcss-purgecss", "npm:2.3.0"],
             ["autoprefixer", "npm:9.8.5"],
             ["browserslist", "npm:4.13.0"],
@@ -10604,7 +10604,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-nested", "npm:4.2.3"],
             ["postcss-preset-env", "npm:6.7.0"],
             ["prettier", "npm:2.0.5"],
-            ["tailwindcss", "npm:1.5.2"],
+            ["tailwindcss", "npm:1.6.2"],
             ["vite", "npm:1.0.0-rc.3"],
             ["vue", "npm:3.0.0-rc.4"],
             ["vue-router", "virtual:c3a79b81fec248e238d1832516ec0ee744c97d14e356f482875e7c75529c639c1975585b67aff3e0f013bcfa7b4bacb43f7f5f4827a7252990b575da65826d4b#npm:4.0.0-beta.3"],
