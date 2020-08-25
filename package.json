@@ -13,7 +13,7 @@
     "env": "yarn node ./scripts/generateEnv.js"
   },
   "dependencies": {
-    "bent": "^7.3.9",
+    "bent": "^7.3.10",
     "vue": "^3.0.0-rc.1",
     "vue-router": "next",
     "vuex": "next",
