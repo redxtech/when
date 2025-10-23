@@ -23,19 +23,16 @@ export default class TraktAPI {
   api_key
   origin
   server
-  endpoint
 
   constructor(
     api_key,
     origin,
     server = origin,
-    endpoint = '/auth/'
   ) {
     // initialize the instance with the api key
     this.api_key = api_key
     this.origin = origin
     this.server = server
-    this.endpoint = endpoint
   }
 
   createHeaders(token = false) {
@@ -81,7 +78,7 @@ export default class TraktAPI {
   // function to make a post request to the oauth endpoints
   async postServer(path, body) {
     return bent(
-      `${this.server}${this.endpoint}`,
+      `${this.server}/auth/`,
       'POST',
       'json',
       200
