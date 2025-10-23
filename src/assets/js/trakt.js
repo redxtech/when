@@ -29,7 +29,7 @@ export default class TraktAPI {
     api_key,
     origin,
     server = origin,
-    endpoint = '/.netlify/functions/'
+    endpoint = '/auth/'
   ) {
     // initialize the instance with the api key
     this.api_key = api_key

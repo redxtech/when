@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "netlify dev",
-    "develop": "vite",
+    "dev": "wrangler pages dev dist",
+    "dev:vite": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "prettier-eslint"
@@ -25,10 +25,10 @@
     "eslint": "^8.57.1",
     "eslint-plugin-vue": "^10.5.1",
     "globals": "^16.4.0",
-    "netlify-cli": "^23.9.3",
     "prettier-eslint": "^16.4.2",
     "prettier-eslint-cli": "^8.0.1",
-    "vite": "npm:rolldown-vite@7.1.14"
+    "vite": "npm:rolldown-vite@7.1.14",
+    "wrangler": "^4.45.0"
   },
   "overrides": {
     "vite": "npm:rolldown-vite@7.1.14"

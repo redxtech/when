@@ -1,4 +1,4 @@
-# Logs
+# logs
 logs
 *.log
 npm-debug.log*
@@ -16,7 +16,7 @@ dist-ssr
 result
 .direnv
 
-# Editor directories and files
+# editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -27,5 +27,5 @@ result
 *.sln
 *.sw?
 
-# Local Netlify folder
-.netlify
+# local util folders
+.wrangler

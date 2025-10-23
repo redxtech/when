@@ -14,25 +14,40 @@
 
       perSystem = { config, self', inputs', pkgs, system, ... }: {
         packages = {
-          when = pkgs.buildNpmPackage (finalAttrs: {
+          when = pkgs.buildNpmPackage {
             pname = "when";
             version = "0.0.0";
 
             src = ./.;
 
-            npmDepsHash = "sha256-ikO1kzx68lPI2XfuWkWD780cltdyT5rmEakNY1bmhx8=";
+            npmDepsHash = "sha256-wcXzcPVDVIZEWB4y9se/HNwFa1+JjSgp0lsXLuqLmW8=";
 
             installPhase = ''
               mkdir -p $out/share/when
               cp -r dist/* $out/share/when
             '';
-          });
+          };
 
           default = self'.packages.when;
         };
 
+        apps = {
+          when = {
+            type = "app";
+            program = pkgs.writeShellApplication {
+              name = "when";
+              runtimeInputs = with pkgs; [ nodejs wrangler ];
+              text = ''
+                wrangler pages dev dist
+              '';
+            };
+          };
+
+          default = self'.apps.when;
+        };
+
         devShells.default =
-          pkgs.mkShell { packages = with pkgs; [ nodejs netlify-cli deno ]; };
+          pkgs.mkShell { packages = with pkgs; [ nodejs wrangler ]; };
       };
     };
 }
