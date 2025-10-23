@@ -20,7 +20,7 @@
 
             src = ./.;
 
-            npmDepsHash = "sha256-wcXzcPVDVIZEWB4y9se/HNwFa1+JjSgp0lsXLuqLmW8=";
+            npmDepsHash = "sha256-WRbvyRV/GFj1IrWY+zFcnzgm4KdKxTC/pXwR3D1D/2A=";
 
             installPhase = ''
               mkdir -p $out/share/when
