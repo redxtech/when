@@ -11,7 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
+
+# nix
 result
+.direnv
 
 # Editor directories and files
 .vscode/*
