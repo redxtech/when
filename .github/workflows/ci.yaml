@@ -1,0 +1,17 @@
+name: 'nix build'
+
+on:
+  push:
+    branches: ['master']
+  pull_request:
+    branches: ['master']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: install omnix
+        run: nix profile install nixpkgs#omnix
+      - run: om ci
