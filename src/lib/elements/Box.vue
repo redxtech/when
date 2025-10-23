@@ -18,6 +18,8 @@
 </script>
 
 <style scoped>
+	@reference "../../assets/css/tailwind.css";
+
   .box {
     @apply rounded shadow-box overflow-hidden transition duration-150 ease-in-out;
 

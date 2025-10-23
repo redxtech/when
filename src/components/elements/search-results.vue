@@ -168,6 +168,8 @@
 </script>
 
 <style scoped>
+	@reference "../../assets/css/tailwind.css";
+
   .results {
     @apply grid grid-cols-4 gap-6 mt-4;
 

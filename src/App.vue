@@ -18,12 +18,14 @@
 </script>
 
 <style>
+	@reference "./assets/css/tailwind.css";
+
   html,
   body,
   #app {
     min-height: 100vh;
   }
   #app {
-    @apply flex flex-col;
+    @apply flex flex-col font-norms;
   }
 </style>

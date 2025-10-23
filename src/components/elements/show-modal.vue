@@ -116,6 +116,8 @@
 </script>
 
 <style>
+	@reference "../../assets/css/tailwind.css";
+
   .remove {
     @apply text-red-500 cursor-pointer;
 

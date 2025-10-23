@@ -53,6 +53,8 @@
 </script>
 
 <style>
+	@reference "../../assets/css/tailwind.css";
+
   .modal-backdrop {
     @apply fixed top-0 bottom-0 left-0 right-0 flex items-center justify-center transition-opacity duration-200 ease-in-out;
     background-color: rgba(0, 0, 0, 0.5);

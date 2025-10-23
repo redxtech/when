@@ -151,6 +151,8 @@
 </script>
 
 <style scoped>
+	@reference "../../assets/css/tailwind.css";
+
   .shows div {
     @apply transform transition-all ease-in-out;
 

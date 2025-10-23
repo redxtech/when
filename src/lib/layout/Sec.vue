@@ -30,6 +30,8 @@
 </script>
 
 <style scoped>
+	@reference "../../assets/css/tailwind.css";
+
   .section {
     @apply my-6;
 

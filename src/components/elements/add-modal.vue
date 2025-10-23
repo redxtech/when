@@ -58,6 +58,8 @@
 </script>
 
 <style scoped>
+	@reference "../../assets/css/tailwind.css";
+
   .add-show {
     label {
       @apply block text-sm font-medium leading-5 text-gray-700;

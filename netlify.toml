@@ -1,6 +1,6 @@
 [build]
 	publish = "dist"
-	command = "yarn build:ci"
+	command = "npm run build"
 	functions = "./functions"
 
 [build.processing]

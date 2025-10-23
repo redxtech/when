@@ -177,6 +177,8 @@
 </script>
 
 <style scoped>
+	@reference "../../assets/css/tailwind.css";
+
   .button {
     @apply inline-flex rounded-md shadow-sm;
 

@@ -1,10 +1,30 @@
-/* purgecss start ignore */
-/*noinspection CssInvalidAtRule*/
-@tailwind base;
+@import "tailwindcss";
 
-/*noinspection CssInvalidAtRule*/
-@tailwind components;
-/* purgecss end ignore */
+@plugin "@tailwindcss/typography";
 
-/*noinspection CssInvalidAtRule*/
-@tailwind utilities;
+@theme {
+	/* colors */
+	--color-primary: #004250;
+	--color-secondary: #3094b4;
+	--color-white: #fff;
+	--color-white-100: #fff;
+	--color-white-200: #fff;
+	--color-white-300: #fff;
+	--color-white-400: #fff;
+	--color-white-500: #fff;
+	--color-white-600: #fff;
+	--color-white-700: #fff;
+	--color-white-800: #fff;
+	--color-white-900: #fff;
+
+	/* box shadows */
+	--shadow-box: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
+	--shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, .1), 0 3px 5px -1px rgba(0, 0, 0, .2), 0 5px 8px 0 rgba(0, 0, 0, .14), 0 1px 14px 0 rgba(0, 0, 0, .12);
+
+	/* fonts */
+	--font-norms: "TT Norms", "Inter var";
+
+	/* breakpoints */
+	--breakpoint-xs: 26rem;
+	--breakpoint-2xl: 90rem;
+}

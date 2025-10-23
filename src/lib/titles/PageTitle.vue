@@ -16,6 +16,8 @@
 </script>
 
 <style scoped>
+	@reference "../../assets/css/tailwind.css";
+
   .page-title {
     @apply my-6;
 

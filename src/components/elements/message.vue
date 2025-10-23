@@ -63,8 +63,10 @@
 </script>
 
 <style scoped>
+	@reference "../../assets/css/tailwind.css";
+
   .message {
-    @apply flex flex-row flex-no-wrap items-center content-center justify-start cursor-pointer;
+    @apply flex flex-row flex-nowrap items-center content-center justify-start cursor-pointer;
 
     .poster {
       @apply w-20 flex-none flex flex-col items-center content-center justify-around;

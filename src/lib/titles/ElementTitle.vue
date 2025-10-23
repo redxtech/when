@@ -55,6 +55,8 @@
 </script>
 
 <style scoped>
+	@reference "../../assets/css/tailwind.css";
+
   .element-title {
     @apply text-gray-900 leading-5;
 

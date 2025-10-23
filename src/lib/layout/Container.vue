@@ -18,8 +18,10 @@
 </script>
 
 <style scoped>
+	@reference "../../assets/css/tailwind.css";
+
   .container {
-    @apply max-w-screen-2xl px-4;
+    @apply max-w-screen-2xl mx-auto px-4;
 
     /* Small (sm) */
     @media (min-width: 640px) {

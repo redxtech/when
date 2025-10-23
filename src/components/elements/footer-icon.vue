@@ -37,6 +37,8 @@
 </script>
 
 <style scoped>
+	@reference "../../assets/css/tailwind.css";
+
   .icon {
     @apply mx-3 text-gray-400;
 

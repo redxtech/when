@@ -14,6 +14,8 @@
 </script>
 
 <style scoped>
+	@reference "../../assets/css/tailwind.css";
+
   .section-title {
     @apply font-bold text-gray-900 text-lg leading-7;
 
