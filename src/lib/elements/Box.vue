@@ -1,30 +1,30 @@
 <template>
-  <div class="box" :class="{ 'p-3': !noPadding }">
-    <slot />
-  </div>
+	<div class="box" :class="{ 'p-3': !noPadding }">
+		<slot />
+	</div>
 </template>
 
 <script>
-  export default {
-    name: 'Box',
-    props: {
-      noPadding: {
-        type: Boolean,
-        required: false,
-        default: false
-      }
-    }
-  }
+	export default {
+		name: 'Box',
+		props: {
+			noPadding: {
+				type: Boolean,
+				required: false,
+				default: false
+			}
+		}
+	}
 </script>
 
 <style scoped>
 	@reference "../../assets/css/tailwind.css";
 
-  .box {
-    @apply rounded shadow-box overflow-hidden transition duration-150 ease-in-out;
+	.box {
+		@apply rounded shadow-box overflow-hidden transition duration-150 ease-in-out;
 
-    &:hover {
-      @apply shadow-hover;
-    }
-  }
+		&:hover {
+			@apply shadow-hover;
+		}
+	}
 </style>
