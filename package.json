@@ -7,7 +7,8 @@
 		"dev:vite": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"lint": "prettier-eslint"
+		"format": "prettier-eslint",
+		"lint": "eslint ./src/**/*.{js,vue} ./functions/**/*.mjs"
 	},
 	"dependencies": {
 		"@tailwindcss/vite": "^4.1.15",
@@ -22,6 +23,7 @@
 		"@eslint/js": "^9.38.0",
 		"@tailwindcss/typography": "^0.5.19",
 		"@vitejs/plugin-vue": "^6.0.1",
+		"@vue/language-server": "^3.1.2",
 		"eslint": "^9.38.0",
 		"eslint-plugin-vue": "^10.5.1",
 		"globals": "^16.4.0",

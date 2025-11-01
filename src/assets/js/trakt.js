@@ -258,6 +258,7 @@ export default class TraktAPI {
 			await this.get({ path: '/users/me', token })
 			return true
 		} catch (e) {
+			console.error(e)
 			return false
 		}
 	}

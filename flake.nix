@@ -20,7 +20,9 @@
 
             src = ./.;
 
-            npmDepsHash = "sha256-WRbvyRV/GFj1IrWY+zFcnzgm4KdKxTC/pXwR3D1D/2A=";
+            npmDepsHash = "sha256-AcHPhtmb89lBUQEDHgcJ33xK7VqBiQEOLcVXI5zhU0E=";
+            forceGitDeps = true;
+            makeCacheWritable = true;
 
             installPhase = ''
               mkdir -p $out/share/when

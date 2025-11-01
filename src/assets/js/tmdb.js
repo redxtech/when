@@ -18,6 +18,7 @@ export default class TmdbAPI {
 				status
 			)(`${path}?api_key=${this.api_key}`)
 		} catch (err) {
+			console.error(err)
 			throw new Error(`GET request to ${path} failed.`)
 		}
 	}
