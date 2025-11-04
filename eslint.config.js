@@ -11,7 +11,8 @@ export default defineConfig([
 		extends: ['js/recommended'],
 		languageOptions: { globals: globals.browser },
 		rules: {
-			'vue/multi-word-component-names': 'off'
+			'vue/multi-word-component-names': 'off',
+			'vue/script-indent': ['error', 'tab', { baseIndent: 1 }]
 		}
 	}
 ])
